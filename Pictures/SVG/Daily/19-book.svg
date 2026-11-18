@@ -1,0 +1,6 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Book</title><desc id="desc">Detailed Qulife daily-life illustration</desc>
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#2563EB"/><stop offset=".52" stop-color="#EF4444"/><stop offset="1" stop-color="#FACC15"/></linearGradient><linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity=".18"/></linearGradient><filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="6" flood-color="#172554" flood-opacity=".2"/></filter></defs>
+  <ellipse cx="100" cy="181" rx="58" ry="7" fill="#172554" opacity=".12"/>
+  <g filter="url(#shadow)"><path d="M100 52C75 37 51 39 34 52v108c18-12 42-13 66 2z" fill="#fff" stroke="url(#g)" stroke-width="6"/><path d="M100 52c25-15 49-13 66 0v108c-18-12-42-13-66 2z" fill="url(#g)" stroke="url(#g)" stroke-width="6"/><path d="M100 52v110M51 75h34M51 91h34M115 75h34M115 91h34" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".9"/></g>
+</svg>

@@ -1,0 +1,32 @@
+<!-- منبه واقعي بيرن: الجرسين والمطرقة بتهتز + عقرب الثواني بيلف + خطوط اهتزاز -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset=".5" stop-color="#EF4444"/><stop offset="1" stop-color="#FACC15"/></linearGradient>
+<radialGradient id="fc" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#e5e7eb"/></radialGradient></defs>
+<style>
+*{transform-box:fill-box}
+.all{transform-origin:50% 90%;animation:rg .16s linear infinite}
+@keyframes rg{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.ham{transform-origin:50% 0;animation:hm .16s linear infinite}
+@keyframes hm{0%,100%{transform:rotate(-26deg)}50%{transform:rotate(26deg)}}
+.sec{transform-origin:50% 100%;animation:sc 3s linear infinite}
+@keyframes sc{to{transform:rotate(360deg)}}
+.vb{fill:none;stroke:#EF4444;stroke-width:4;stroke-linecap:round;animation:vb .32s ease-in-out infinite}
+@keyframes vb{50%{opacity:.2}}
+</style>
+<g class="vb"><path class="vb" d="M14 40 L4 30M10 62 L-2 60M186 40 L196 30M190 62 L202 60"/></g>
+<g class="all">
+<path d="M52 176 L40 194M148 176 L160 194" stroke="url(#g)" stroke-width="10" stroke-linecap="round"/>
+<ellipse cx="52" cy="46" rx="26" ry="18" transform="rotate(-28 52 46)" fill="url(#g)"/>
+<ellipse cx="148" cy="46" rx="26" ry="18" transform="rotate(28 148 46)" fill="url(#g)"/>
+<path d="M100 26 V40" stroke="#334155" stroke-width="6" stroke-linecap="round"/>
+<g class="ham"><path d="M100 38 V56" stroke="#334155" stroke-width="4"/><circle cx="100" cy="60" r="6" fill="#334155"/></g>
+<circle cx="100" cy="112" r="68" fill="url(#g)"/>
+<circle cx="100" cy="112" r="56" fill="url(#fc)"/>
+<g stroke="#334155" stroke-width="3" stroke-linecap="round"><path d="M100 64V72M100 152V160M52 112H60M140 112H148"/></g>
+<g stroke="#94a3b8" stroke-width="2" stroke-linecap="round"><path d="M124 71L120 78M76 71L80 78M76 153L80 146M124 153L120 146M149 88L142 92M51 88L58 92M149 136L142 132M51 136L58 132"/></g>
+<path d="M100 112 L100 80" stroke="#0f172a" stroke-width="5" stroke-linecap="round"/>
+<path d="M100 112 L122 124" stroke="#0f172a" stroke-width="5" stroke-linecap="round"/>
+<path class="sec" d="M100 112 L100 70" stroke="#EF4444" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="100" cy="112" r="5" fill="#EF4444"/>
+<path d="M60 80 Q80 60 108 62" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" opacity=".7"/>
+</g></svg>

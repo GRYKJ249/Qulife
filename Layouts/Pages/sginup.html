@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Qulife - Sign Up</title>
+<script>try{if(localStorage.getItem('qulife_user_name')||sessionStorage.getItem('qulife_user_name')||document.cookie.indexOf('qulife_onboarded=1')!==-1)location.replace('dashboard.html')}catch(e){}</script>
+<link rel="stylesheet" href="../Styles/Style/Style.css" />
+<link rel="stylesheet" href="../Styles/Style/Themes.css" />
+<script src="../Javascript/js/i18n.js?v=20261117-ar5"></script>
+<script src="../Javascript/js/page-copy-i18n.js?v=20261117-email1"></script>
+<style>
+/* Qulife auth polish: ambient motion, depth and accessible state transitions */
+  @keyframes ambient{0%,100%{transform:translate3d(0,0,0) scale(1)}50%{transform:translate3d(0,-10px,0) scale(1.03)}}
+  @keyframes progressGlow{0%,100%{filter:saturate(1)}50%{filter:saturate(1.35) brightness(1.08)}}
+  body{background:radial-gradient(circle at 12% 8%,rgba(255,46,126,.11),transparent 34%),radial-gradient(circle at 92% 18%,rgba(37,99,235,.09),transparent 32%),#FBFBFC;transition:background .45s ease}
+  .page{position:relative;isolation:isolate}
+  .page::before{content:"";position:fixed;z-index:-1;width:280px;height:280px;left:-150px;top:22%;border-radius:50%;background:var(--accent-soft,rgba(255,46,126,.10));filter:blur(12px);animation:ambient 8s ease-in-out infinite;pointer-events:none}
+  .step.active{animation:fadeUp .42s cubic-bezier(.2,.9,.25,1) both}
+  .progress .line i{background:linear-gradient(90deg,#2563EB,#FF2E7E,#FACC15);animation:progressGlow 2.6s ease-in-out infinite}
+  .name-box.valid{box-shadow:0 0 0 3px rgba(22,163,74,.08)}
+  .choose-btn,.apply,.next-btn{background:linear-gradient(135deg,var(--accent,#FF2E7E),var(--accent-2,#EF4444) 52%,var(--accent-3,#FACC15));background-size:160% 160%;animation:progressGlow 4s ease-in-out infinite}
+  .finger-circle.done{border-color:#16A34A;box-shadow:0 0 0 8px rgba(22,163,74,.08),0 12px 34px rgba(22,163,74,.18)}
+  @media(prefers-reduced-motion:reduce){.page::before,.progress .line i,.choose-btn,.apply,.next-btn{animation:none!important}}
+  *{-webkit-tap-highlight-color:transparent;box-sizing:border-box}
+  @keyframes pageIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  @keyframes heartbeat{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1.05)}45%{transform:scale(1.18)}60%{transform:scale(1)}}
+  @keyframes keyIn{0%{transform:translate(38px,38px) rotate(-25deg);opacity:0}40%{opacity:1}100%{transform:translate(0,0) rotate(0);opacity:1}}
+  @keyframes lockOpen{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+  @keyframes pop{0%{transform:scale(.85);opacity:0}100%{transform:scale(1);opacity:1}}
+  @keyframes spinSlow{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+  @keyframes pulseRing{0%{box-shadow:0 0 0 0 rgba(255,46,126,.25)}100%{box-shadow:0 0 0 18px rgba(255,46,126,0)}}
+  @keyframes cloudFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  @keyframes floatOut1{0%,100%{transform:translate(0,0) scale(1);opacity:.9}50%{transform:translate(-46px,18px) scale(1.05);opacity:1}}
+  @keyframes floatOut2{0%,100%{transform:translate(0,0) scale(1);opacity:.9}50%{transform:translate(46px,14px) scale(1.05);opacity:1}}
+  @keyframes floatOut3{0%,100%{transform:translate(0,0) scale(1);opacity:.9}50%{transform:translate(0,38px) scale(1.05);opacity:1}}
+  @keyframes fingerPulse{0%{transform:scale(1)}50%{transform:scale(1.07)}100%{transform:scale(1)}}
+  @keyframes userSpin{0%{transform:rotate(0) scale(1)}50%{transform:rotate(8deg) scale(1.06)}100%{transform:rotate(0) scale(1)}}
+  @keyframes atSpin{0%{transform:rotate(0) scale(1)}50%{transform:rotate(-10deg) scale(1.08)}100%{transform:rotate(0) scale(1)}}
+  body{background:#FBFBFC}
+  .page{animation:pageIn .35s ease both;justify-content:flex-start !important;padding-top:10px !important;background:#FBFBFC;max-width:520px;margin:0 auto}
+  .progress{display:flex;align-items:center;gap:5px;margin:12px 0 4px}
+  .progress .dot{width:28px;height:28px;border-radius:50%;background:#F1F1F5;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.25s;border:2px solid transparent;cursor:pointer}
+  .progress .dot svg{width:14px;height:14px}
+  .progress .dot.active{background:#FF2E7E;border-color:#FFD1E2;box-shadow:0 3px 10px rgba(255,46,126,.25);animation:pop .25s ease}
+  .progress .dot.done{background:#16A34A}
+  .progress .line{flex:1;height:3px;background:#EEE;border-radius:99px;overflow:hidden}
+  .progress .line i{display:block;height:100%;width:0;background:#FF2E7E;border-radius:99px;transition:.4s}
+  .progress .line.fill i{width:100%}
+  .progress-label{font-size:11px;font-weight:700;letter-spacing:.06em;color:#9CA3AF;text-transform:uppercase;margin:2px 0 0;text-align:center}
+  .anim-stage{display:flex;align-items:center;justify-content:center;width:100%;min-height:210px;margin:2px 0;position:relative;animation:fadeUp .4s ease both;cursor:pointer}
+  .anim-stage svg{display:block;width:min(76vw,230px);height:auto;animation:floaty 3.5s ease-in-out infinite}
+  .anim-stage.beat svg{animation:heartbeat .9s ease}
+  .anim-stage.useranim svg{animation:userSpin .7s ease}
+  .anim-stage.atanim svg{animation:atSpin .8s ease}
+  .anim-stage small{position:absolute;bottom:2px;font-size:11px;color:#9CA3AF;font-weight:600}
+  .step{display:none;width:100%;animation:fadeUp .3s ease both}
+  .step.active{display:block}
+  .page-top{display:flex;align-items:center;gap:12px}
+  .page-top h2{font-size:21px;line-height:1.2;margin:0}
+  .page-top p{font-size:13.5px;color:#6B7280;margin:3px 0 0;line-height:1.4}
+  .page-top .title-ico{width:42px;height:42px;border-radius:14px;background:#FFF;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.05);flex-shrink:0}
+  .page-top .title-ico svg{width:22px;height:22px}
+  .name-row{display:flex;gap:12px;width:100%;margin:16px 0 8px}
+  .stack{display:flex;flex-direction:column;gap:14px;width:100%;margin:16px 0 8px}
+  .name-field{flex:1;display:flex;flex-direction:column;gap:8px;min-width:0}
+  .name-field label{font-size:13px;font-weight:700;color:#374151;padding-left:4px;display:flex;align-items:center;gap:6px}
+  .name-field label svg{width:14px;height:14px}
+  .name-box{display:flex;align-items:center;gap:10px;background:#FFFFFF;border:1.5px solid #EDEEF2;border-radius:16px;padding:15px 13px;transition:.2s;position:relative}
+  .name-box.tall{padding:17px 13px}
+  .name-box::after{content:"";position:absolute;left:50%;bottom:-2px;transform:translateX(-50%) scaleX(0);width:70%;height:3px;background:linear-gradient(90deg,#2563EB,#FF2E7E,#FACC15);border-radius:99px;transition:.25s;opacity:0}
+  .name-box:focus-within{border-color:#FF2E7E;box-shadow:0 0 0 3px rgba(255,46,126,.10)}
+  .name-box:focus-within::after{transform:translateX(-50%) scaleX(1);opacity:1}
+  .name-box.error{border-color:#EF4444 !important;animation:shake .3s ease}
+  .name-box.valid{border-color:#16A34A}
+  .name-box svg{flex-shrink:0;opacity:.55}
+  .name-box input,.name-box select{border:none;outline:none;background:transparent;width:100%;font-size:16px;font-weight:600;color:#111827}
+  .name-box input::placeholder{color:#9CA3AF;font-weight:400}
+  .eye{border:none;background:none;cursor:pointer;padding:0 2px;display:flex;align-items:center}
+  .eye svg{opacity:.6}
+  .mini-btn{border:1px solid #FFE0EC;background:#FFF5F8;color:#FF2E7E;font-size:11px;font-weight:800;padding:6px 10px;border-radius:99px;cursor:pointer;white-space:nowrap}
+  .next-btn{width:100%;margin-top:18px;display:flex;align-items:center;justify-content:center;gap:8px;font-size:16px;padding:15px}
+  .next-btn:disabled{opacity:.45;pointer-events:none}
+  .next-btn svg{width:18px;height:18px}
+  .err{font-size:12.5px;color:#EF4444;min-height:16px;display:none;align-items:center;gap:6px}
+  .err.show{display:flex}
+  .err svg{width:14px;height:14px;flex-shrink:0}
+  .info-big{width:100%;display:flex;gap:12px;align-items:flex-start;background:#FFFFFF;border:1.5px solid #F0F0F4;border-radius:20px;padding:18px;margin:10px 0 4px}
+  .info-big svg{width:26px;height:26px;flex-shrink:0;margin-top:1px}
+  .info-big p{font-size:14.5px;line-height:1.65;color:#4B5563;margin:0}
+  .info-big p b{color:#111827;font-size:15px;display:block;margin-bottom:3px}
+  .info-big.pink{background:#FFF7F9;border-color:#FFE0EC}
+  .info-big.blue{background:#F6F9FF;border-color:#DCE9FF}
+  .info-big.green{background:#F6FBF7;border-color:#D1FADF}
+  .info-big.purple{background:#FAF8FF;border-color:#E9E0FF}
+  .strength{display:flex;gap:6px;margin-top:2px}
+  .strength i{flex:1;height:6px;border-radius:99px;background:#E5E7EB;display:block;transition:.3s}
+  .strength i.on{background:#FF2E7E}
+  .strength i.on.green{background:#16A34A}
+  .strength-label{font-size:12px;font-weight:700;color:#6B7280;text-align:right}
+  .reqs{display:flex;flex-direction:column;gap:7px;margin-top:2px}
+  .reqs span{font-size:13px;color:#9CA3AF;display:flex;gap:8px;align-items:center}
+  .reqs span.ok{color:#16A34A;font-weight:600}
+  .reqs b{font-size:14px;color:#FF2E7E}
+  .counter{font-size:11px;color:#9CA3AF;text-align:right}
+  .profile-wrap{display:flex;flex-direction:column;align-items:center;gap:13px;margin:-8px 0 6px;transform:translateY(-10px)}
+  .profile-circle{width:185px;height:185px;border-radius:50%;background:#FFF;border:2px dashed #E5E7EB;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;cursor:pointer;box-shadow:0 8px 24px rgba(255,46,126,.10)}
+  .profile-circle img{width:100%;height:100%;object-fit:cover;object-position:center 28%;display:none;transform:translateY(-6px)}
+  .profile-circle.has-img img{display:block}
+  .profile-circle.has-img .default-profile{display:none}
+  .profile-circle.has-img{border-style:solid;border-color:#FF2E7E}
+  .default-profile{width:115px;height:115px;transform:translateY(-4px)}
+  .choose-btn{border:none;background:#FF2E7E;color:#fff;font-size:15px;font-weight:800;padding:14px 20px;border-radius:16px;cursor:pointer;box-shadow:0 6px 14px rgba(255,46,126,.22);display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
+  .choose-btn:active{transform:scale(.98)}
+  .choose-btn:disabled{opacity:.45;pointer-events:none}
+  .choose-btn svg{width:18px;height:18px}
+  .choose-btn.secondary{background:#fff;color:#111827;border:1.5px solid #EDEEF2;box-shadow:none}
+  .hint{font-size:12px;color:#9CA3AF;text-align:center;display:flex;align-items:center;gap:6px;justify-content:center}
+  .hint svg{width:14px;height:14px}
+  .bio-card{background:#fff;border:1px solid #F0F0F4;border-radius:20px;padding:16px;text-align:center}
+  .bio-card h3{font-size:16px;margin:0 0 6px;display:flex;align-items:center;gap:8px;justify-content:center}
+  .bio-card h3 svg{width:18px;height:18px}
+  .bio-card p{font-size:14px;color:#4B5563;line-height:1.65;margin:0}
+  .finger-wrap{display:flex;flex-direction:column;align-items:center;gap:14px;margin:6px 0}
+  .finger-circle{width:190px;height:190px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.05);border:1px solid #F0F0F4;position:relative;cursor:pointer}
+  .finger-circle svg{width:145px;height:145px}
+  .fingerprint-illustration{width:156px!important;height:156px!important;filter:drop-shadow(0 7px 13px rgba(255,46,126,.10))}
+  .fingerprint-button-icon{width:22px!important;height:22px!important;opacity:1!important;flex:none}
+  .bio-card h3 svg,.info-big>svg,.perm-item>svg,.summary-row>svg,.unlock-opt>svg,.cloud-mini svg{stroke-linecap:round;stroke-linejoin:round}
+  .title-ico{border:1px solid #F3E7EC;box-shadow:0 6px 16px rgba(17,24,39,.06)!important}
+  .step .info-big,.step .bio-card,.step .cloud-card{box-shadow:0 8px 22px rgba(17,24,39,.035)}
+  .finger-circle::after{animation:none;border-style:solid;border-color:rgba(255,46,126,.28)}
+  .finger-circle.done{animation:pulseRing 1s ease}
+  .finger-circle.fingeranim{animation:fingerPulse .7s ease}
+  .finger-circle::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:2px dashed #FFD1E2;animation:spinSlow 14s linear infinite}
+  .perm-list{display:flex;flex-direction:column;gap:10px;margin:14px 0}
+  .perm-item{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid #F0F0F4;border-radius:16px;padding:14px}
+  .perm-item.allowed{border-color:#16A34A;background:#F6FBF7}
+  .perm-item svg{flex-shrink:0}
+  .perm-item b{font-size:14px;display:block}
+  .perm-item span{font-size:12.5px;color:#6B7280}
+  .perm-item .status{margin-left:auto;font-size:11px;font-weight:800;color:#9CA3AF}
+  .perm-item.allowed .status{color:#16A34A}
+  .tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px}
+  .chip{border:1.5px solid #EDEEF2;background:#fff;border-radius:99px;padding:8px 12px;font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:6px;cursor:pointer}
+  .chip svg{width:14px;height:14px}
+  .chip.active{background:#FFF5F8;border-color:#FF2E7E;color:#FF2E7E}
+  .summary{display:flex;flex-direction:column;gap:10px;margin:12px 0}
+  .summary-row{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #F0F0F4;border-radius:14px;padding:12px}
+  .summary-row svg{width:18px;height:18px}
+  .summary-row b{font-size:13px}
+  .summary-row span{font-size:12px;color:#6B7280;margin-left:auto;text-align:right;max-width:55%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .lock-note{font-size:12px;color:#EF4444;text-align:center;display:none;margin-top:8px}
+  .lock-note.show{display:block}
+  .pass-card{background:#fff;border:1.5px solid #F0F0F4;border-radius:22px;padding:18px}
+  .pass-card h3{font-size:15px;margin:0 0 4px}
+  .pass-card p{font-size:13.5px;color:#6B7280;line-height:1.6;margin:0 0 12px}
+  .keylock-stage{display:flex;align-items:center;justify-content:center;gap:6px;min-height:180px}
+  .keylock-stage svg{width:170px;height:170px}
+  .birth-row{display:flex;gap:10px}
+  .birth-row .name-box{flex:1;padding:12px}
+  .birth-row select{font-size:15px;appearance:none;cursor:pointer}
+  .birth-row label{font-size:11px;color:#9CA3AF;font-weight:700}
+  .unlock-row{display:flex;gap:10px}
+  .unlock-opt{flex:1;background:#fff;border:1.5px solid #EDEEF2;border-radius:16px;padding:14px 8px;text-align:center;cursor:pointer}
+  .unlock-opt.active{border-color:#FF2E7E;background:#FFF5F8}
+  .unlock-opt svg{width:26px;height:26px;margin:0 auto 6px;display:block}
+  .unlock-opt b{font-size:12.5px;display:block}
+  .unlock-opt span{font-size:11px;color:#6B7280}
+  .cloud-wrap{position:relative;width:240px;height:210px;display:flex;align-items:center;justify-content:center}
+  .cloud-wrap .cloud-main{width:210px;height:210px;animation:cloudFloat 3s ease-in-out infinite}
+  .cloud-mini{position:absolute;width:44px;height:44px;background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+  .cloud-mini svg{width:24px;height:24px}
+  .cloud-mini.m1{left:0;top:58px;animation:floatOut1 3.2s ease-in-out infinite}
+  .cloud-mini.m2{right:0;top:58px;animation:floatOut2 3.2s ease-in-out infinite}
+  .cloud-mini.m3{left:50%;bottom:8px;transform:translateX(-50%);animation:floatOut3 3.2s ease-in-out infinite}
+  .cloud-card{background:linear-gradient(180deg,#FFF 0%,#F6F9FF 100%);border:1.5px solid #E6EEFF;border-radius:22px;padding:18px;text-align:center}
+  .cloud-card h3{font-size:16px;margin:0 0 6px}
+  .cloud-card p{font-size:14px;color:#4B5563;line-height:1.65;margin:0}
+  .finger-sep{height:14px}
+  html,body{min-height:100%}
+  body{height:auto;min-height:100vh;overflow-x:hidden;overflow-y:auto;align-items:flex-start;justify-content:center}
+  .page{padding-top:calc(14px + env(safe-area-inset-top)) !important;overflow:visible}
+  .page .step .page-top{position:relative;inset:auto;top:auto;left:auto;width:100%;min-height:66px;margin:0 0 8px;padding:12px 14px;border:1px solid var(--border);border-radius:20px;background:linear-gradient(135deg,rgba(255,255,255,.96),rgba(255,245,249,.88));box-shadow:0 8px 22px rgba(15,23,42,.07);opacity:1;transform:none;animation:none;z-index:1}
+  .progress{margin:4px 0 2px}
+  .progress-label{letter-spacing:normal}
+  /* Keep signup actions in the flow so they never cover field help or counters. */
+  .page{padding-bottom:28px !important}
+  .page .step .next-btn{position:static;inset:auto;left:auto;bottom:auto;z-index:1;width:100%;max-width:none;margin:14px 0 2px;padding:15px 20px;opacity:1;transform:none;animation:none;box-shadow:0 10px 22px var(--accent-shadow),0 0 0 4px rgba(255,255,255,.68)}
+  .page .step .next-btn:disabled{opacity:.52;cursor:not-allowed}
+  .page .step .next-btn:hover{transform:translateY(-1px)}
+  .page .step .next-btn:active{transform:scale(.985)}
+  html[dir="rtl"] .page .step .next-btn svg,html[dir="rtl"] .page .step .back img{transform:rotate(180deg)}
+  @media(max-width:520px){.page{padding-left:16px;padding-right:16px;padding-bottom:calc(24px + env(safe-area-inset-bottom)) !important}.page .step .page-top{min-height:60px;gap:9px;padding:10px 12px}.page .step .page-top h2{font-size:19px}.page .step .page-top p{font-size:12.5px}.anim-stage{min-height:180px}.page .step .next-btn{min-height:54px;margin-top:12px}}
+  .email-analysis{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px;margin:0 0 10px;padding:11px 13px;border:1px solid #DBEAFE;border-radius:15px;background:#F7FAFF;color:#475569;font-size:12px;line-height:1.5;direction:inherit}
+  .email-analysis-mark{width:9px;height:9px;flex:0 0 9px;margin-top:4px;border-radius:50%;background:#3B82F6}
+  .email-analysis-text{flex:1;min-width:180px}
+  .email-analysis button{margin-inline-start:auto;padding:7px 11px;border:1px solid #FFE0EC;border-radius:99px;background:#FFF5F8;color:#D6155F;font-size:11px;font-weight:800;cursor:pointer}
+  .email-analysis button[hidden]{display:none!important}
+  .email-analysis.is-good{border-color:#BBF7D0;background:#F0FDF4;color:#166534}.email-analysis.is-good .email-analysis-mark{background:#16A34A}
+  .email-analysis.is-warning{border-color:#FDE68A;background:#FFFBEB;color:#92400E}.email-analysis.is-warning .email-analysis-mark{background:#F59E0B}
+  .email-analysis.is-error{border-color:#FECACA;background:#FEF2F2;color:#B91C1C}.email-analysis.is-error .email-analysis-mark{background:#EF4444}
+  /* ===== shared theme + responsive finish ===== */
+  body{background:var(--site-background)!important;color:var(--ink)}
+  .page{background:transparent!important;color:var(--ink);width:min(100%,520px);max-width:520px;padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
+  .page-top{background:var(--surface)!important;border-color:var(--border)!important;box-shadow:0 8px 22px var(--shadow)!important;color:var(--ink)}
+  .page-top h2,.page-top p,.name-field label,.progress-label,.counter,.hint,.strength-label,.reqs span,.lock-note{color:var(--ink)}
+  .page-top p,.progress-label,.counter,.hint,.strength-label,.reqs span,.lock-note{color:var(--muted)}
+  .name-box,.pass-card,.bio-card,.finger-circle,.perm-item,.chip,.summary-row,.unlock-opt,.cloud-card,.cloud-mini,.info-big,.profile-circle{background:var(--surface)!important;border-color:var(--border)!important;color:var(--ink)}
+  .name-box input,.name-box select,.name-box input::placeholder{color:var(--ink)}
+  .name-box input::placeholder{color:var(--muted)}
+  .info-big.pink,.info-big.blue,.info-big.green,.info-big.purple,.cloud-card{background:var(--surface)!important;border-color:var(--border)!important}
+  .info-big p,.cloud-card p,.pass-card p,.bio-card p,.unlock-opt span,.perm-item span{color:var(--muted)}
+  .info-big p b,.pass-card h3,.bio-card h3,.unlock-opt b,.perm-item b,.summary-row b{color:var(--ink)}
+  .chip.active,.unlock-opt.active{background:var(--accent-soft)!important;border-color:var(--accent)!important;color:var(--accent-text)}
+  .progress .dot{background:var(--surface);border-color:var(--border)}
+  .progress .line{background:var(--border)}
+  .profile-circle,.finger-circle{box-shadow:0 8px 24px var(--shadow)}
+  .choose-btn.secondary{background:var(--surface)!important;color:var(--ink);border-color:var(--border)}
+  .page .step .page-top .back{background:var(--surface);border-color:var(--border);color:var(--ink)}
+  @media(max-width:520px){
+    .page{padding-top:calc(10px + env(safe-area-inset-top))!important;padding-bottom:calc(26px + env(safe-area-inset-bottom))!important}
+    .page-top{min-height:58px!important;padding:9px 10px!important;border-radius:18px!important}
+    .page-top .title-ico{width:38px;height:38px;border-radius:12px;background:var(--surface);box-shadow:none}
+    .page-top h2{font-size:18px!important}.page-top p{font-size:11.5px!important}
+    .progress{gap:3px}.progress .dot{width:26px;height:26px}.progress .dot svg{width:13px;height:13px}
+    .anim-stage{min-height:172px;margin:0!important}.anim-stage svg{width:min(62vw,200px)}
+    .name-row{gap:8px;margin-top:10px}.name-field label{font-size:12px}.name-box{padding:12px 10px!important;border-radius:14px}
+    .info-big{padding:14px!important;margin:8px 0 3px!important;border-radius:17px!important}.info-big p{font-size:13px!important;line-height:1.55!important}
+    .next-btn{min-height:52px!important;border-radius:15px!important}.tools{gap:6px}.chip{padding:7px 9px;font-size:11.5px}
+  }
+
+  /* User-selected static SVG artwork: disable motion on registration illustrations. */
+  .anim-stage svg,.cloud-wrap svg,.finger-circle svg,.cloud-mini{animation:none!important;transform:none!important}
+  .finger-circle.done,.finger-circle.fingeranim{animation:none!important}
+  svg,svg *{animation:none!important}
+
+  .hero-fingerprint-svg{width:180px;height:180px;filter:drop-shadow(0 8px 15px rgba(255,46,126,.12))}
+  .pattern-panel{width:100%;max-width:360px;margin:4px auto 8px;padding:16px 14px 12px;border:1px solid #F5DCE6;border-radius:22px;background:linear-gradient(160deg,#fff,#FFF7FA);text-align:center;box-shadow:0 8px 22px rgba(255,46,126,.07)}
+  .pattern-panel[hidden],#fingerCircle[hidden]{display:none!important}
+  .pattern-heading{display:flex;flex-direction:column;gap:4px;color:#1F2937;font-size:14px}.pattern-heading span{font-size:12px;font-weight:500;color:#6B7280}
+  .pattern-board{width:min(72vw,260px);height:auto;margin:10px auto 2px;display:block;touch-action:none;user-select:none}
+  .pattern-hit{fill:transparent;stroke:none;pointer-events:all}.pattern-node{fill:#fff;stroke:#FF2E7E;stroke-width:5;pointer-events:none}
+  .pattern-board g.is-on .pattern-node{fill:#FF2E7E;stroke:#FFB9D2}
+  .pattern-status{min-height:20px;margin:3px 0 7px;font-size:12px;font-weight:700;color:#6B7280}.pattern-status.is-error{color:#DC2626}.pattern-status.is-success{color:#15803D}
+  .pattern-clear{border:1px solid #F5DCE6;background:#fff;color:#BE185D;border-radius:999px;padding:7px 13px;font-size:12px;font-weight:700;cursor:pointer}
+
+  @keyframes heartPop{0%{transform:scale(.78) rotate(-8deg)}32%{transform:scale(1.18) rotate(5deg)}58%{transform:scale(.94) rotate(-2deg)}78%{transform:scale(1.06) rotate(1deg)}100%{transform:scale(1) rotate(0)}}
+  @keyframes heartRing{0%{transform:translate(-50%,-50%) scale(.45);opacity:.75}100%{transform:translate(-50%,-50%) scale(1.35);opacity:0}}
+  @keyframes heartSparkOne{0%,100%{opacity:0;transform:translate(0,8px) scale(.4)}35%{opacity:1}80%{opacity:0;transform:translate(-18px,-23px) scale(1.1)}}
+  @keyframes heartSparkTwo{0%,100%{opacity:0;transform:translate(0,8px) scale(.4)}35%{opacity:1}80%{opacity:0;transform:translate(18px,-20px) scale(1.15)}}
+  @keyframes heartSparkThree{0%,100%{opacity:0;transform:translate(0,5px) scale(.4)}30%{opacity:1}80%{opacity:0;transform:translate(0,-28px) scale(1.1)}}
+  .heart-button{position:relative;display:block;border:0;background:transparent;padding:0;cursor:pointer;line-height:0;isolation:isolate}
+  .heart-button>svg{position:relative;z-index:1;width:200px!important;height:200px!important;animation:none!important;filter:drop-shadow(0 7px 12px rgba(37,99,235,.12));transform-origin:center}
+  .heart-button:before{content:"";position:absolute;z-index:0;left:50%;top:50%;width:145px;height:145px;border:2px solid rgba(239,68,68,.32);border-radius:50%;transform:translate(-50%,-50%) scale(.4);opacity:0}
+  .heart-button.is-animating>svg{animation:heartPop .78s cubic-bezier(.2,.9,.3,1) both!important;filter:drop-shadow(0 10px 18px rgba(239,68,68,.27))}
+  .heart-button.is-animating:before{animation:heartRing .78s ease-out both}
+  .heart-spark{position:absolute;z-index:2;top:18%;left:50%;color:#FACC15;font-size:22px;line-height:1;opacity:0;pointer-events:none;text-shadow:0 2px 8px rgba(250,204,21,.35)}
+  .heart-button.is-animating .one{animation:heartSparkOne .72s ease-out .03s both}
+  .heart-button.is-animating .two{animation:heartSparkTwo .72s ease-out .08s both;color:#2563EB}
+  .heart-button.is-animating .three{animation:heartSparkThree .72s ease-out .12s both;color:#EF4444}
+  .heart-button:focus-visible{outline:3px solid #2563EB;outline-offset:5px;border-radius:22px}
+  .start-btn{width:100%;margin-top:15px;display:flex;align-items:center;justify-content:center;gap:10px;padding:14px 18px;border:0;border-radius:16px;background:linear-gradient(110deg,#2563EB,#EF4444 56%,#FACC15);color:#fff;font-size:16px;font-weight:850;box-shadow:0 8px 20px rgba(239,68,68,.19);transition:transform .18s,box-shadow .18s}
+  .start-btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px rgba(239,68,68,.25)}.start-btn:active{transform:scale(.98)}
+  .start-btn svg{width:18px;height:18px;flex:none}
+  @media(prefers-reduced-motion:reduce){.heart-button.is-animating>svg,.heart-button.is-animating:before,.heart-button.is-animating .heart-spark{animation:none!important}.heart-button.is-animating>svg{transform:scale(1.06)}}
+</style>
+<script src="../Javascript/js/nav.js"></script>
+<script src="../Javascript/js/theme-engine.js"></script>
+<script src="../Javascript/auth-client.js"></script>
+</head>
+<body>
+  <div class="page">
+
+    <!-- STEP 1 : NAME -->
+    <div class="step active" id="step1">
+      <div class="page-top">
+        <button class="back" onclick="qulifeBack()" aria-label="Back"><img src="../../Pictures/SVG/Themes/icon-40fb42.svg" alt=""></button>
+        <div class="title-ico"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#FF2E7E" stroke-width="2"/><path d="M4 21C4 16.5 7.5 13.5 12 13.5C16.5 13.5 20 16.5 20 21" stroke="#FF2E7E" stroke-width="2" stroke-linecap="round"/></svg></div>
+        <div><h2>Your Name</h2><p>Enter your name to continue</p></div>
+      </div>
+      <div class="progress-label">Your Name</div>
+      <div class="anim-stage" id="heroStage"><div id="stage" style="display:flex;align-items:center;justify-content:center;width:100%">
+        <button class="heart-button" id="heartButton" type="button" aria-label="Animate the heart" aria-pressed="false"><svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="mix" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563EB" />
+      <stop offset="50%" stop-color="#EF4444" />
+      <stop offset="100%" stop-color="#FACC15" />
+    </linearGradient>
+  </defs>
+  <path fill="url(#mix)" d="M100 165 C 40 120 10 85 10 55 C 10 25 35 5 60 5 C 78 5 92 15 100 30 C 108 15 122 5 140 5 C 165 5 190 25 190 55 C 190 85 160 120 100 165 Z" />
+</svg><span class="heart-spark one" aria-hidden="true">✦</span><span class="heart-spark two" aria-hidden="true">✧</span><span class="heart-spark three" aria-hidden="true">✦</span></button>
+      </div></div>
+      <div class="name-row">
+        <div class="name-field">
+          <label for="firstName">First Name</label>
+          <div class="name-box" id="boxFirst"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#111827" stroke-width="1.8" /><path d="M4 21C4 16.5 7.5 13.5 12 13.5C16.5 13.5 20 16.5 20 21" stroke="#111827" stroke-width="1.8" stroke-linecap="round" /></svg><input id="firstName" type="text" placeholder="First Name" autocomplete="given-name" maxlength="30" oninput="validateName()" onpaste="return blockBadPaste(event)" /></div>
+        </div>
+        <div class="name-field">
+          <label for="lastName">Last Name</label>
+          <div class="name-box" id="boxLast"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#111827" stroke-width="1.8" /><path d="M4 21C4 16.5 7.5 13.5 12 13.5C16.5 13.5 20 16.5 20 21" stroke="#111827" stroke-width="1.8" stroke-linecap="round" /></svg><input id="lastName" type="text" placeholder="Last Name" autocomplete="family-name" maxlength="30" oninput="validateName()" onpaste="return blockBadPaste(event)" /></div>
+        </div>
+      </div>
+      <div class="info-big pink"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#FF2E7E" stroke-width="2"/><path d="M4 21C4 16.5 7.5 13.5 12 13.5C16.5 13.5 20 16.5 20 21" stroke="#FF2E7E" stroke-width="2" stroke-linecap="round"/></svg><p><b>Your real name</b>This is how friends will find you on Qulife. Use your real first name, letters only, no numbers or symbols.</p></div>
+      <div class="info-big blue"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#2563EB" stroke-width="2"/><path d="M12 8v5M12 16v.5" stroke="#2563EB" stroke-width="2" stroke-linecap="round"/></svg><p><b>Why two names?</b>One name is not enough. Your last name keeps your account unique and helps people trust your profile.</p></div>
+      <div class="counter"><span id="nameCount">0 / 30</span> characters</div>
+      <button class="start-btn" id="startButton" type="button" onclick="startName()"><span data-i18n="app.start">Start</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </div>
+
+  </div>
+<script>
+  const signup = { firstName:'', lastName:'' };
+
+  let heartTimer=null;
+  function animateHeart(){
+    const button=document.getElementById('heartButton');
+    button.classList.remove('is-animating'); void button.offsetWidth; button.classList.add('is-animating'); button.setAttribute('aria-pressed','true');
+    clearTimeout(heartTimer); heartTimer=setTimeout(()=>{button.classList.remove('is-animating');button.setAttribute('aria-pressed','false')},900);
+  }
+  document.getElementById('heartButton').addEventListener('click',animateHeart);
+  function startName(){
+    animateHeart();
+    if(!validateName()){
+      const first=document.getElementById('firstName');
+      first.focus({preventScroll:true});
+      return;
+    }
+    const profile={firstName:signup.firstName,lastName:signup.lastName,createdAt:new Date().toISOString()};
+    try{localStorage.setItem('qulife_user_name',JSON.stringify(profile));localStorage.setItem('qulife_onboarded','1');sessionStorage.setItem('qulife_user_name',JSON.stringify(profile));sessionStorage.setItem('qulife_onboarded','1');document.cookie='qulife_onboarded=1; Max-Age=31536000; Path=/; SameSite=Lax';}catch(e){}
+    const target=new URL('dashboard.html',window.location.href).href;
+    if(window.top!==window) window.top.location.href=target; else window.location.href=target;
+  }
+  function translateStart(){ const labels={en:'Start',ar:'ابدأ',fr:'Démarrer',tr:'Başlat',es:'Iniciar'}; const lang=(window.QulifeI18n&&window.QulifeI18n.lang)||document.documentElement.lang||'en'; const label=document.querySelector('#startButton [data-i18n]'); if(label) label.textContent=labels[lang]||'Start'; }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',translateStart,{once:true}); else translateStart();
+  window.addEventListener('qulife-lang',translateStart);
+
+  function cleanName(value){ return String(value||'').replace(/[^A-Za-z\u0600-\u06FF\s'-]/g,'').replace(/\s+/g,' ').trim(); }
+  function blockBadPaste(event){ const text=(event.clipboardData||window.clipboardData).getData('text')||''; if(/[<>"'`;\\]/.test(text)||text.length>30){event.preventDefault();return false;} return true; }
+  function validateName(){
+    const first=document.getElementById('firstName'), last=document.getElementById('lastName');
+    first.value=cleanName(first.value); last.value=cleanName(last.value);
+    document.getElementById('nameCount').textContent=(first.value.length+last.value.length)+' / 30';
+    const pattern=/^[A-Za-z\u0600-\u06FF]+([ '-][A-Za-z\u0600-\u06FF]+)*$/;
+    const valid=first.value.length>=2&&last.value.length>=2&&pattern.test(first.value)&&pattern.test(last.value)&&first.value.toLowerCase()!==last.value.toLowerCase();
+    document.getElementById('boxFirst').classList.toggle('valid',first.value.length>=2);
+    document.getElementById('boxLast').classList.toggle('valid',last.value.length>=2);
+    document.getElementById('boxFirst').classList.toggle('error',first.value.length>0&&first.value.length<2);
+    document.getElementById('boxLast').classList.toggle('error',last.value.length>0&&last.value.length<2);
+    if(valid){signup.firstName=first.value;signup.lastName=last.value;}
+    return valid;
+  }
+</script>
+<script src="../Javascript/js/themes.js"></script>
+<script src="../Javascript/js/protect-copy.js"></script>
+</body>
+</html>

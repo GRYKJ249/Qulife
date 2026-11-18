@@ -1,0 +1,108 @@
+/* Sidebar.css - سايدبار صفحة الشات (تصميم جديد بالكامل)
+   يتحمل بعد Chat.css ويستخدم نفس متغيرات الثيم (--chat-* و --accent*) فيتبع الثيمات تلقائيًا.
+   الأقسام: الخلفية الشفافة | الحاوية | الرأس | زر جديد | البحث | المحادثات | الأدوات | الفوتر | الحركة | الموبايل */
+
+/* ===== الخلفية الشفافة خلف السايدبار ===== */
+.qs-backdrop{position:fixed;inset:0;z-index:20;background:rgba(10,14,24,.42);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);animation:qsFade .22s ease both}
+.qs-backdrop[hidden],.qs-sidebar[hidden]{display:none}
+
+/* ===== الحاوية: لوحة زجاجية على اليمين ===== */
+.qs-sidebar{position:fixed;z-index:21;inset-block:0;inset-inline-start:0;width:min(344px,90vw);height:100dvh;display:flex;flex-direction:column;gap:12px;padding:max(16px,env(safe-area-inset-top)) 14px max(14px,env(safe-area-inset-bottom));border-inline-end:1px solid var(--chat-line);border-radius:0 26px 26px 0;color:var(--chat-text);overflow:hidden;
+  background:
+    radial-gradient(120% 60% at 100% 0%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 62%),
+    linear-gradient(180deg,var(--chat-panel),color-mix(in srgb,var(--chat-panel) 90%,var(--accent-soft)));
+  box-shadow:24px 0 70px rgba(8,12,24,.28);animation:qsSlide .3s cubic-bezier(.2,.85,.25,1) both}
+/* الصفحة عربية (RTL) فالبداية = اليمين؛ نعكس الحواف ليظهر من اليمين */
+[dir=rtl] .qs-sidebar{border-radius:26px 0 0 26px;box-shadow:-24px 0 70px rgba(8,12,24,.28);animation-name:qsSlideRtl}
+.qs-sidebar svg{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ===== الرأس: الشعار + إغلاق ===== */
+.qs-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:2px 2px 4px}
+.qs-brand{display:flex;align-items:center;gap:11px;min-width:0}
+.qs-mark{display:grid;place-items:center;width:44px;height:44px;flex:0 0 44px}
+.qs-sidebar .qs-mark svg{width:42px;height:42px;stroke:none;filter:drop-shadow(0 6px 10px rgba(239,68,68,.35));animation:qsBeat 2.6s ease-in-out infinite}
+.qs-brand strong{display:block;font-size:18px;letter-spacing:-.03em;line-height:1.1}
+.qs-brand small{display:block;margin-top:3px;color:var(--chat-muted);font-size:11px}
+.qs-close{display:grid;place-items:center;width:36px;height:36px;border:1px solid var(--chat-line);border-radius:12px;background:var(--chat-panel-soft);color:var(--chat-text);cursor:pointer;transition:.18s ease}
+.qs-close:hover{border-color:var(--accent);color:var(--accent-text);transform:rotate(90deg)}
+.qs-close svg{width:17px;height:17px;stroke-width:2}
+
+/* ===== زر محادثة جديدة ===== */
+.qs-new{position:relative;display:flex;align-items:center;gap:10px;width:100%;min-height:52px;padding:8px 10px;border:0;border-radius:16px;overflow:hidden;color:var(--on-accent,#fff);font:inherit;font-weight:800;cursor:pointer;background:linear-gradient(110deg,var(--accent),var(--accent-2));box-shadow:0 12px 26px var(--accent-shadow,rgba(255,46,126,.28));transition:transform .18s ease,box-shadow .18s ease}
+.qs-new::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);transform:translateX(-120%);transition:transform .6s ease}
+.qs-new:hover{transform:translateY(-1px)}.qs-new:hover::after{transform:translateX(120%)}
+.qs-new:active{transform:scale(.985)}
+.qs-new-icon{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:rgba(255,255,255,.2)}
+.qs-new-icon svg{width:18px;height:18px;stroke-width:2.2}
+.qs-new-text{font-size:14px}
+.qs-new kbd{margin-inline-start:auto;padding:3px 7px;border:1px solid rgba(255,255,255,.35);border-radius:7px;background:rgba(255,255,255,.14);font:600 10px ui-monospace,SFMono-Regular,Menlo,monospace;opacity:.9}
+
+/* ===== البحث في المحادثات ===== */
+.qs-search{display:flex;align-items:center;gap:8px;padding:0 12px;height:42px;border:1px solid var(--chat-line);border-radius:14px;background:var(--chat-panel-soft);color:var(--chat-muted);transition:.18s ease}
+.qs-search:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);color:var(--accent-text)}
+.qs-search svg{width:17px;height:17px;flex:0 0 17px}
+.qs-search input{flex:1;min-width:0;height:100%;border:0;outline:0;background:transparent;color:var(--chat-text);font:inherit;font-size:13px}
+.qs-search input::placeholder{color:var(--chat-muted)}
+.qs-search input::-webkit-search-cancel-button{cursor:pointer}
+
+/* ===== قائمة المحادثات (تتمدد وتتمرر لوحدها) ===== */
+.qs-scroll{flex:1;min-height:90px;margin-inline:-4px;padding-inline:4px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--chat-line) transparent;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 8px,#000 calc(100% - 14px),transparent 100%);mask-image:linear-gradient(180deg,transparent 0,#000 8px,#000 calc(100% - 14px),transparent 100%)}
+.qs-history{display:flex;flex-direction:column;gap:2px;padding:6px 0 10px}
+.qs-group{margin:10px 6px 4px;color:var(--chat-muted);font-size:10px;font-weight:800;letter-spacing:.06em}
+.qs-group:first-child{margin-top:2px}
+.qs-row{position:relative;display:flex;align-items:center;border-radius:14px;opacity:0;animation:qsItem .3s ease both;animation-delay:calc(var(--i,0)*28ms)}
+.qs-item{display:flex;align-items:center;gap:10px;flex:1;min-width:0;padding:9px 10px;border:1px solid transparent;border-radius:14px;background:transparent;color:var(--chat-text);font:inherit;font-size:13px;text-align:start;cursor:pointer;transition:background .16s ease,border-color .16s ease}
+.qs-item-icon{display:grid;place-items:center;width:30px;height:30px;flex:0 0 30px;border-radius:10px;background:color-mix(in srgb,var(--chat-panel-soft) 80%,transparent);color:var(--chat-muted);transition:.16s ease}
+.qs-item-icon svg{width:15px;height:15px}
+.qs-item-text{display:flex;flex-direction:column;min-width:0;gap:2px}
+.qs-item-title{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+.qs-item-time{color:var(--chat-muted);font-size:10px}
+.qs-row:hover .qs-item{background:color-mix(in srgb,var(--accent-soft) 55%,transparent)}
+.qs-row:hover .qs-item-icon{color:var(--accent-text)}
+.qs-row.active .qs-item{background:var(--accent-soft);border-color:color-mix(in srgb,var(--accent) 30%,transparent)}
+.qs-row.active .qs-item-icon{background:var(--accent);color:var(--on-accent,#fff)}
+.qs-row.active::before{content:"";position:absolute;inset-block:10px;inset-inline-start:-4px;width:3px;border-radius:4px;background:var(--accent)}
+.qs-item:focus-visible,.qs-del:focus-visible,.qs-tool-grid button:focus-visible,.qs-links a:focus-visible,.qs-user:focus-visible,.qs-new:focus-visible,.qs-close:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* زر حذف المحادثة: يظهر عند المرور أو التركيز */
+.qs-del{position:absolute;inset-inline-end:6px;display:grid;place-items:center;width:28px;height:28px;border:0;border-radius:9px;background:var(--chat-panel);color:var(--chat-muted);opacity:0;cursor:pointer;transition:.16s ease}
+.qs-del svg{width:14px;height:14px}
+.qs-row:hover .qs-del,.qs-row:focus-within .qs-del{opacity:1}
+.qs-del:hover{background:rgba(209,67,91,.12);color:#d1435b}
+.qs-empty{margin:18px 8px;padding:16px;border:1px dashed var(--chat-line);border-radius:14px;color:var(--chat-muted);font-size:12px;text-align:center;line-height:1.7}
+
+/* ===== أدوات المحادثة الحالية ===== */
+.qs-tools{padding-top:12px;border-top:1px solid color-mix(in srgb,var(--chat-line) 85%,transparent)}
+.qs-label{display:block;margin:0 4px 8px;color:var(--chat-muted);font-size:10px;font-weight:800;letter-spacing:.06em}
+.qs-tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.qs-tool-grid button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:58px;padding:7px 4px;border:1px solid transparent;border-radius:13px;background:color-mix(in srgb,var(--chat-panel-soft) 75%,transparent);color:var(--chat-text);font:inherit;cursor:pointer;transition:.16s ease}
+.qs-tool-grid button svg{width:18px;height:18px;color:var(--accent-text)}
+.qs-tool-grid button span{font-size:10.5px;font-weight:600}
+.qs-tool-grid button:hover{border-color:color-mix(in srgb,var(--accent) 35%,transparent);background:var(--accent-soft);transform:translateY(-1px)}
+.qs-tool-grid button.danger svg,.qs-tool-grid button.danger{color:#d1435b}
+.qs-tool-grid button.danger:hover{background:rgba(209,67,91,.1);border-color:rgba(209,67,91,.3)}
+
+/* ===== الفوتر: بطاقة المستخدم + روابط سريعة ===== */
+.qs-foot{display:flex;align-items:center;gap:8px;padding-top:12px;border-top:1px solid color-mix(in srgb,var(--chat-line) 85%,transparent)}
+.qs-user{display:flex;align-items:center;gap:10px;flex:1;min-width:0;padding:6px 8px;border:1px solid var(--chat-line);border-radius:15px;background:var(--chat-panel-soft);color:var(--chat-text);text-decoration:none;transition:.16s ease}
+.qs-user:hover{border-color:var(--accent);background:var(--accent-soft)}
+.qs-avatar{display:grid;place-items:center;width:34px;height:34px;flex:0 0 34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:var(--on-accent,#fff);font-weight:800;font-size:14px;overflow:hidden}
+.qs-avatar img{display:block;width:100%;height:100%;object-fit:cover}
+.qs-user-text{display:flex;flex-direction:column;min-width:0}
+.qs-user-text strong{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:13px}
+.qs-user-text small{color:var(--chat-muted);font-size:10px}
+.qs-links{display:flex;gap:5px}
+.qs-links a{display:grid;place-items:center;width:40px;height:44px;border:1px solid var(--chat-line);border-radius:13px;background:var(--chat-panel-soft);color:var(--chat-muted);transition:.16s ease}
+.qs-links a svg{width:18px;height:18px}
+.qs-links a:hover{color:var(--accent-text);border-color:var(--accent);background:var(--accent-soft);transform:translateY(-1px)}
+
+/* ===== الحركة ===== */
+@keyframes qsBeat{0%,100%{transform:scale(1)}12%{transform:scale(1.1)}24%{transform:scale(1)}}
+@keyframes qsFade{from{opacity:0}to{opacity:1}}
+@keyframes qsSlide{from{opacity:0;transform:translateX(-34px)}to{opacity:1;transform:none}}
+@keyframes qsSlideRtl{from{opacity:0;transform:translateX(34px)}to{opacity:1;transform:none}}
+@keyframes qsItem{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.qs-mark svg{animation:none}.qs-sidebar,.qs-backdrop,.qs-row{animation:none;opacity:1}.qs-new::after{display:none}}
+
+/* ===== الموبايل واللمس ===== */
+@media (hover:none){.qs-del{opacity:.7}}
+@media (max-width:600px){.qs-sidebar{width:min(340px,92vw);padding-inline:12px}.qs-new kbd{display:none}.qs-tool-grid button{min-height:54px}}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Themes - Qulife</title>
+<!-- صفحة الثيمات (تصميم جديد كامل) - التنسيق: Styles/Style/ThemesPage.css | الكود: Javascript/js/themes-page.js -->
+<!-- ملاحظة: Themes.css و themes.js القديمة ما اتمسحت لأن sginup.html لسه بتستخدمها -->
+<link rel="stylesheet" href="../Styles/Style/Style.css" />
+<link rel="stylesheet" href="../Styles/Style/ThemesPage.css" />
+<script src="../Javascript/js/nav.js"></script>
+<script src="../Javascript/js/theme-engine.js"></script>
+<script src="../Javascript/js/activity-db.js"></script>
+<script src="../Javascript/js/i18n.js?v=20261117-ar5"></script>
+<script src="../Javascript/js/page-copy-i18n.js?v=20261117-ar5"></script>
+</head>
+<body>
+  <!-- ===== الشريط العلوي الثابت ===== -->
+  <header class="tp-bar">
+    <button class="tp-back" id="backBtn" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="tp-title"><h1 data-i18n="th.title">Themes</h1><p data-i18n="th.sub">Pick a look</p></div>
+  </header>
+
+  <main class="tp-page">
+    <!-- ===== المعاينة الحية: نفس شاشة Qulife الرئيسية بالثيم المختار ===== -->
+    <section class="tp-live" id="live" aria-live="polite">
+      <div class="tp-phone" aria-hidden="true">
+        <div class="tp-phone-screen">
+          <svg class="tp-phone-heart" viewBox="0 0 200 170"><path d="M100 165 C 40 120 10 85 10 55 C 10 25 35 5 60 5 C 78 5 92 15 100 30 C 108 15 122 5 140 5 C 165 5 190 25 190 55 C 190 85 160 120 100 165 Z"/></svg>
+          <b data-i18n-html="app.welcome">Welcome to <span class="brand">Qulife</span></b>
+          <small data-i18n="common.choose">Choose your style</small>
+          <i class="tp-phone-btn" data-i18n="app.start">Get started</i>
+        </div>
+      </div>
+      <div class="tp-live-info">
+        <span class="tp-eyebrow" data-i18n="th.live">LIVE PREVIEW</span>
+        <strong id="liveName">Qulife</strong>
+        <span class="tp-mode" id="liveMode">Light</span>
+        <div class="tp-ratios">
+          <span><em id="rText">--</em> <u data-i18n="th.text">Text</u></span>
+          <span><em id="rBtn">--</em> <u data-i18n="th.button">Button</u></span>
+          <span><em id="rAcc">--</em> <u data-i18n="th.accent">Accent</u></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== البحث + الفلاتر ===== -->
+    <div class="tp-search">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="searchInput" type="text" data-i18n-ph="th.search" placeholder="Search color" autocomplete="off" />
+    </div>
+    <div class="tp-chips" id="chips" role="tablist">
+      <button class="on" data-f="all" data-i18n="f.all">All</button>
+      <button data-f="light" data-i18n="f.light">Light</button>
+      <button data-f="dark" data-i18n="f.dark">Dark</button>
+      <button data-f="mine" data-i18n="f.mine">Mine</button>
+    </div>
+
+    <!-- ===== شبكة الثيمات: بتتولد من themes-page.js ===== -->
+    <div id="sections"></div>
+
+    <div class="tp-empty" id="emptyState">
+      <!-- القطة المحققة بتتحط هنا من empty-cat.js -->
+      <div class="qc-slot" data-empty-cat></div>
+      <b data-i18n="empty.t">No theme found</b><span data-i18n="empty.s">Try another color</span>
+    </div>
+  </main>
+
+  <!-- ===== شريط التطبيق السفلي ===== -->
+  <footer class="tp-apply">
+    <div class="tp-apply-sw" id="applySw"></div>
+    <div class="tp-apply-name"><small data-i18n="common.selected">Selected</small><b id="applyName">Qulife</b></div>
+    <button id="applyBtn" data-i18n="common.apply">Apply</button>
+  </footer>
+
+  <!-- ===== نافذة اللون المخصص ===== -->
+  <div class="tp-overlay" id="overlay"></div>
+  <section class="tp-sheet" id="sheet" aria-label="Custom color">
+    <div class="tp-handle" id="sheetHandle"><i></i></div>
+    <h3 data-i18n="sheet.title">Make your own</h3>
+    <div class="cp-area" id="cpArea"><div class="cp-dot" id="cpDot"></div></div>
+    <div class="cp-hue" id="cpHue"><div class="cp-hue-dot" id="cpHueDot"></div></div>
+    <div class="cp-preview" id="cpPreview">
+      <div class="cp-prev-screen"><b>Aa Qulife</b><span>accent</span><i data-i18n="th.button">Button</i></div>
+      <div class="cp-prev-info"><input id="cpName" maxlength="14" data-i18n-ph="sheet.name" placeholder="Style name" /><code id="cpHex">#FF2E7E</code><small id="cpNote"></small></div>
+    </div>
+    <button class="tp-sheet-done" id="cpDone" data-i18n="sheet.save">Save style</button>
+  </section>
+
+<script src="../Javascript/js/empty-cat.js"></script>
+<script src="../Javascript/js/themes-page.js"></script>
+<script src="../Javascript/js/protect-copy.js"></script>
+</body>
+</html>

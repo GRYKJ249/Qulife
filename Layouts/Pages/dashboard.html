@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Qulife Dashboard</title>
+  <link rel="stylesheet" href="../Styles/Style/Style.css" />
+  <link rel="stylesheet" href="../Styles/Style/Themes.css" />
+  <link rel="stylesheet" href="../Styles/Style/Dashboard.css" />
+  <script src="../Javascript/js/nav.js"></script>
+  <script src="../Javascript/js/theme-engine.js"></script>
+  <script src="../Javascript/js/activity-db.js"></script>
+  <script src="../Javascript/js/i18n.js?v=20261117-ar5"></script>
+</head>
+<body class="dashboard-body">
+  <main class="dashboard-shell">
+    <header class="dash-header">
+      <a class="dash-brand" href="Index.html" aria-label="Qulife">
+      <span class="dash-logo" aria-label="Qulife"><svg width="34" height="34" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="mix" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2563EB"/><stop offset="50%" stop-color="#EF4444"/><stop offset="100%" stop-color="#FACC15"/></linearGradient></defs><path fill="url(#mix)" d="M100 165 C40 120 10 85 10 55 C10 25 35 5 60 5 C78 5 92 15 100 30 C108 15 122 5 140 5 C165 5 190 25 190 55 C190 85 160 120 100 165 Z"/></svg></span><strong>Qulife</strong>
+      </a>
+      <div class="dash-actions">
+        <a class="icon-btn" href="../../Translation/Translation.html" aria-label="Language"><img src="../../Pictures/SVG/globe.svg" alt="" /></a>
+        <a class="icon-btn" href="Themes.html" aria-label="Themes"><img src="../../Pictures/SVG/shirt.svg" alt="" /></a>
+        <a class="avatar" id="avatar" href="account.html" aria-label="Profile"><span id="avatarInitial">Q</span><img id="avatarImage" alt="" /></a>
+      </div>
+    </header>
+
+    <section class="welcome-row">
+      <div>
+        <p class="eyebrow" data-dash-i18n="dash.eyebrow">مساحتك اليومية</p>
+        <h1><span data-dash-i18n="dash.good">مساء الخير</span>، <span id="userName">user name</span>!</h1>
+        <p class="muted" data-dash-i18n="dash.subtitle">خلّ يومك يمشي على إيقاعك.</p>
+      </div>
+      <span class="online-pill"><i></i><span data-dash-i18n="dash.preview">معاينة</span></span>
+    </section>
+
+    <section class="composer-card simple-composer" aria-label="مساحة الكتابة">
+      <textarea id="aiInput" rows="2" placeholder="اكتب رسالتك إلى Qulife" dir="auto" aria-label="مساحة الكتابة"></textarea>
+      <div id="captureTray" class="dash-chips" hidden aria-live="polite"></div>
+      <div class="simple-composer-bar"><button id="attachBtn" class="composer-icon plus" type="button" aria-label="إضافة"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button><div class="composer-right"><button id="recordBtn" class="composer-icon record" type="button" aria-label="إملاء صوتي" title="إملاء صوتي"><svg viewBox="0 0 24 24" fill="none"><rect x="8" y="3" width="8" height="13" rx="4" stroke="currentColor" stroke-width="1.8"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3m-4 0h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button><button id="sendMessage" class="composer-icon send-up" type="button" aria-label="إرسال" title="إرسال" disabled><svg viewBox="0 0 24 24" fill="none"><path d="M12 19V5m0 0L6 11m6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div><span id="captureStatus" class="capture-status" aria-live="polite"></span><span class="composer-hint">Enter للإرسال · Shift+Enter سطر جديد</span></div>
+    </section>
+    <input id="filePicker" type="file" accept=".txt,.md,.csv,.json,.log,text/plain,text/markdown,text/csv,application/json" multiple hidden />
+    <input id="imagePicker" type="file" accept="image/*" multiple hidden />
+    <section id="attachSheet" class="attach-sheet" hidden aria-label="خيارات الإرفاق"><div class="sheet-backdrop" data-close-sheet></div><div class="sheet-card"><div class="sheet-handle"></div><div class="sheet-title"><strong>إضافة إلى رسالتك</strong><button type="button" data-close-sheet aria-label="إغلاق">×</button></div><p>ملفات نصية (TXT · MD · CSV · JSON) أو صور.</p><div class="sheet-options"><button id="chooseFile" type="button"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h9l5 5v11H5V4Zm9 0v5h5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><strong>إرفاق ملف</strong><small>TXT · MD · CSV · JSON</small></button><button id="chooseImage" type="button"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="16" height="16" rx="3" stroke="currentColor" stroke-width="1.8"/><circle cx="9" cy="9" r="1.5" fill="currentColor"/><path d="m5 17 4-4 3 3 2-2 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><strong>فتح المعرض</strong><small>اختر صورة من الجهاز</small></button></div></div></section>
+
+    <nav class="quick-grid" aria-label="Quick actions">
+      <a href="#" class="quick-card pink"><span class="quick-icon">☼</span><strong data-dash-i18n="dash.today">يومي</strong><small data-dash-i18n="dash.todaySub">رتّب يومك</small></a>
+      <a href="Themes.html" class="quick-card blue"><span class="quick-icon">✦</span><strong data-dash-i18n="dash.themes">الثيمات</strong><small data-dash-i18n="dash.themesSub">غيّر مزاجك</small></a>
+      <a href="../../Translation/Translation.html" class="quick-card purple"><span class="quick-icon">文</span><strong data-dash-i18n="dash.language">اللغة</strong><small data-dash-i18n="dash.languageSub">تكلّم بطريقتك</small></a>
+      <a href="activity.html" class="quick-card activity-card"><span class="quick-icon">◷</span><strong>نشاطي</strong><small>راجع ما حدث داخل Qulife</small></a>
+    </nav>
+
+    <section class="section-block">
+      <div class="section-heading"><h2 data-dash-i18n="dash.recent">آخر لحظاتك</h2><a href="activity.html" data-dash-i18n="dash.viewAll">عرض الكل</a></div>
+      <article class="moment-card">
+        <div class="moment-icon">♥</div>
+        <div><strong data-dash-i18n="dash.momentTitle">بداية لطيفة</strong><p id="momentText" data-dash-i18n="dash.momentText">اكتب أول فكرة وخليها ذكرى جميلة.</p></div>
+        <time data-dash-i18n="dash.now">الآن</time>
+      </article>
+    </section>
+
+    <section class="section-block inspiration">
+      <div class="section-heading"><h2 data-dash-i18n="dash.inspiration">إلهام اليوم</h2><span>✧</span></div>
+      <div class="quote-card"><span>“</span><p data-dash-i18n="dash.quote">الأيام الصغيرة تصنع الحياة الكبيرة.</p><b>Qulife</b></div>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="../Javascript/js/dashboard.js"></script>
+  <script src="../Javascript/js/composer.js"></script>
+</body>
+</html>

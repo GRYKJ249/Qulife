@@ -1,0 +1,37 @@
+<!-- مسجد بيأذن: نجوم تلمع + موجات صوت من المآذن + هلال ينبض + نوافذ مضيئة -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 170">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset=".5" stop-color="#EF4444"/><stop offset="1" stop-color="#FACC15"/></linearGradient>
+<linearGradient id="w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF6C2"/><stop offset="1" stop-color="#FACC15"/></linearGradient>
+<radialGradient id="gl"><stop offset="0" stop-color="#FACC15" stop-opacity=".55"/><stop offset="1" stop-color="#FACC15" stop-opacity="0"/></radialGradient></defs>
+<style>
+*{transform-box:fill-box}
+.wv{fill:none;stroke:#EF4444;stroke-width:3;stroke-linecap:round;opacity:0;transform-origin:center;animation:wv 1.8s ease-out infinite}
+.d2{animation-delay:.6s}.d3{animation-delay:1.2s}
+@keyframes wv{0%{opacity:0;transform:scale(.5)}30%{opacity:.9}100%{opacity:0;transform:scale(1.4)}}
+.st{fill:#FACC15;animation:tw 1.4s ease-in-out infinite}.s2{animation-delay:.5s}.s3{animation-delay:.9s}
+@keyframes tw{50%{opacity:.15}}
+.lit{animation:lt 1.6s ease-in-out infinite}
+@keyframes lt{50%{opacity:.6}}
+.cr{transform-origin:center;animation:cr 2s ease-in-out infinite}
+@keyframes cr{50%{transform:scale(1.15) rotate(-6deg)}}
+</style>
+<circle class="st" cx="14" cy="22" r="2.5"/><circle class="st s2" cx="206" cy="30" r="2"/><circle class="st s3" cx="88" cy="10" r="1.8"/><circle class="st s2" cx="140" cy="14" r="2.2"/>
+<ellipse cx="110" cy="112" rx="70" ry="45" fill="url(#gl)" class="lit"/>
+<rect x="0" y="150" width="220" height="20" fill="#1e293b" opacity=".12"/>
+<g fill="url(#g)">
+<rect x="34" y="62" width="14" height="90" rx="3"/><rect x="172" y="62" width="14" height="90" rx="3"/>
+<rect x="29" y="78" width="24" height="6" rx="3"/><rect x="167" y="78" width="24" height="6" rx="3"/>
+<path d="M33 62 L41 38 L49 62Z"/><path d="M171 62 L179 38 L187 62Z"/>
+<path d="M62 102 C62 66 86 50 110 50 C134 50 158 66 158 102Z"/>
+<path d="M56 112 C56 96 70 88 80 88 C90 88 104 96 104 112Z" opacity=".9"/>
+<path d="M116 112 C116 96 130 88 140 88 C150 88 164 96 164 112Z" opacity=".9"/>
+<rect x="52" y="100" width="116" height="52" rx="4"/></g>
+<circle cx="41" cy="35" r="3" fill="#FACC15"/><circle cx="179" cy="35" r="3" fill="#FACC15"/>
+<path d="M110 50 V40" stroke="#FACC15" stroke-width="3"/>
+<path class="cr" d="M113 14 A12 12 0 1 0 113 38 A9 9 0 1 1 113 14Z" fill="#FACC15"/>
+<g fill="url(#w)" class="lit"><path d="M98 152 V130 Q110 112 122 130 V152Z"/>
+<path d="M62 142 V122 Q69 112 76 122 V142Z"/><path d="M144 142 V122 Q151 112 158 122 V142Z"/>
+<path d="M82 100 V94 Q88 88 94 94 V100Z"/><path d="M126 100 V94 Q132 88 138 94 V100Z"/></g>
+<g><path class="wv" d="M24 52 Q14 60 24 68"/><path class="wv d2" d="M20 48 Q6 60 20 72"/><path class="wv d3" d="M16 44 Q-2 60 16 76"/></g>
+<g><path class="wv" d="M196 52 Q206 60 196 68"/><path class="wv d2" d="M200 48 Q214 60 200 72"/><path class="wv d3" d="M204 44 Q222 60 204 76"/></g>
+</svg>

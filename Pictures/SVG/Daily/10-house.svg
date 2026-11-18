@@ -1,0 +1,6 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">House</title><desc id="desc">Detailed Qulife daily-life illustration</desc>
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#2563EB"/><stop offset=".52" stop-color="#EF4444"/><stop offset="1" stop-color="#FACC15"/></linearGradient><linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity=".18"/></linearGradient><filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="6" flood-color="#172554" flood-opacity=".2"/></filter></defs>
+  <ellipse cx="100" cy="181" rx="58" ry="7" fill="#172554" opacity=".12"/>
+  <g filter="url(#shadow)"><path d="m34 91 66-57 66 57v71H34z" fill="url(#g)" stroke="#fff" stroke-width="6" stroke-linejoin="round"/><path d="m23 91 77-67 77 67" fill="none" stroke="url(#g)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><rect x="82" y="113" width="36" height="49" rx="7" fill="#fff"/><rect x="49" y="107" width="22" height="22" rx="4" fill="#fff" opacity=".9"/><rect x="129" y="107" width="22" height="22" rx="4" fill="#fff" opacity=".9"/><circle cx="111" cy="138" r="4" fill="url(#g)"/></g>
+</svg>

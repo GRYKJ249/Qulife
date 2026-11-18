@@ -1,0 +1,24 @@
+{
+  "name": "qulife-auth",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:client": "esbuild server/client/auth-client.ts --bundle --format=iife --outfile=Layouts/Javascript/auth-client.js",
+    "build": "npm run build:client",
+    "dev:auth": "tsx server/src/server.ts",
+    "dev:preview": "node preview-server.mjs"
+  },
+  "dependencies": {
+    "@simplewebauthn/server": "latest",
+    "cors": "latest",
+    "express": "latest"
+  },
+  "devDependencies": {
+    "@simplewebauthn/browser": "latest",
+    "@types/cors": "latest",
+    "@types/express": "latest",
+    "esbuild": "latest",
+    "tsx": "latest",
+    "typescript": "latest"
+  }
+}

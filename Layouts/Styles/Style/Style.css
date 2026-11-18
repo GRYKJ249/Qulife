@@ -1,0 +1,36 @@
+/* Style.css - التنسيق العام + متغيرات الثيم المشتركة */
+:root{--accent:#ff2e7e;--accent-2:#ff7ab8;--accent-soft:rgba(255,46,126,.14);--page-bg-1:#ffd4e5;--page-bg-2:#ffffff;--surface:rgba(255,255,255,.88);--surface-strong:#fff;--surface-soft:rgba(255,255,255,.7);--control-bg:rgba(255,255,255,.96);--on-accent:#fff;--accent-text:#d6155f;--shadow:rgba(15,23,42,.1);--ink:#222;--muted:#7b8190;--border:rgba(148,163,184,.22);--accent-shadow:rgba(255,46,126,.4)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;-webkit-tap-highlight-color:transparent}
+body{height:100vh;overflow:hidden;background:var(--site-background,radial-gradient(circle at 8% 8%,rgba(255,46,126,.24),transparent 34%),radial-gradient(circle at 92% 88%,rgba(255,182,211,.22),transparent 36%),linear-gradient(135deg,#ffc9df 0%,#fff 42%,#fff9fc 70%,#ffdceb 100%));display:flex;align-items:center;justify-content:center;transition:background .35s ease,color .35s ease}
+
+/* ===== شاشة البداية - ما اتلمست ===== */
+#splash{position:fixed;inset:0;background:var(--site-background,linear-gradient(135deg,#ffc9df 0%,#fff 42%,#fff9fc 70%,#ffdceb 100%));display:flex;align-items:center;justify-content:center;z-index:10;transition:opacity .6s ease, visibility .6s}
+#splash.hide{opacity:0;visibility:hidden;pointer-events:none}
+#splash img{width:180px;height:180px;animation:beat 1.5s ease-in-out infinite}
+@keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.15)}30%{transform:scale(1)}45%{transform:scale(1.15)}60%{transform:scale(1)}}
+
+#main{display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px;width:100%;height:100vh;position:relative}
+#main.show{display:flex}
+.top-bar{direction:ltr;position:absolute;top:20px;left:20px;right:20px;display:flex;justify-content:space-between;align-items:center}
+.top-bar img{width:36px;height:36px;cursor:pointer}
+
+
+
+h1{font-size:38px;color:var(--ink);letter-spacing:.5px}
+h1 .brand{color:var(--accent-text);transition:color .35s ease}
+.tagline{font-size:17px;font-weight:600;letter-spacing:.3px;color:var(--accent-text)}
+#startBtn{margin-top:14px;width:280px;padding:18px 0;font-size:21px;font-weight:bold;letter-spacing:.5px;color:var(--on-accent);border:none;border-radius:999px;cursor:pointer;background:linear-gradient(135deg,var(--accent),var(--accent-2) 52%,var(--accent-3));box-shadow:0 12px 28px var(--accent-shadow);transition:.25s;outline:none !important;-webkit-tap-highlight-color:transparent;user-select:none}
+#startBtn:hover{transform:scale(1.04)}
+#startBtn:active{transform:scale(.97)}
+#startBtn:focus{outline:none !important;box-shadow:0 12px 28px var(--accent-shadow)}
+#startBtn:focus-visible{outline:none !important}
+/* لو الحركة اتشافت قبل كده في نفس الجلسة، نخفي شاشة البداية فورا */
+.seen #splash{display:none}
+/* الصفحات (الثيمات/اللغات) بتفتح فوق الصفحة الرئيسية بدون ما الموقع يتعاد - router.js */
+.page-frame{position:fixed;inset:0;width:100%;height:100%;border:0;background:var(--page-bg-2);z-index:50;opacity:0;transform:translateY(24px);transition:opacity .3s ease,transform .3s ease}
+.page-frame.open{opacity:1;transform:none}
+
+/* Qulife content protection: prevent copying while keeping form controls usable. */
+body{-webkit-user-select:none;user-select:none}
+input,textarea,select,[contenteditable="true"]{-webkit-user-select:text;user-select:text}
+img,svg{-webkit-user-drag:none;user-drag:none}

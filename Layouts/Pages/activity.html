@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>نشاطي - Qulife</title>
+  <link rel="stylesheet" href="../Styles/Style/Style.css" />
+  <link rel="stylesheet" href="../Styles/Style/Dashboard.css" />
+  <link rel="stylesheet" href="../Styles/Style/Activity.css" />
+  <script src="../Javascript/js/theme-engine.js"></script>
+  <script src="../Javascript/js/i18n.js?v=20261117-ar5"></script>
+  <script src="../Javascript/js/activity-db.js"></script>
+</head>
+<body class="dashboard-body activity-body">
+  <main class="dashboard-shell activity-shell">
+    <header class="dash-header">
+      <a class="icon-btn" href="dashboard.html" aria-label="رجوع">‹</a>
+      <div class="activity-title"><span class="eyebrow">QULIFE JOURNAL</span><h1>نشاطي</h1><p class="muted">سجل محلي لأحداث Qulife فقط</p></div>
+      <span class="activity-lock" title="محلي على هذا المتصفح">⌾</span>
+    </header>
+
+    <section class="privacy-note"><strong>خصوصيتك أولًا</strong><p>لا نسجل كلمات المرور، النصوص المكتوبة، محتوى المواقع، أو نشاط التطبيقات الأخرى. يمكنك حذف السجل في أي وقت.</p></section>
+
+    <section class="activity-tools" aria-label="أدوات السجل">
+      <input id="activitySearch" type="search" placeholder="ابحث في النشاط" autocomplete="off" />
+      <select id="activityType" aria-label="نوع النشاط"><option value="">كل الأنواع</option><option value="page_view">فتح صفحة</option><option value="interaction">تفاعل</option><option value="setting">إعداد</option></select>
+      <div class="activity-actions"><button id="exportBtn" class="tool-btn">تصدير JSON</button><button id="clearBtn" class="danger-btn">حذف الكل</button></div>
+    </section>
+
+    <section class="activity-summary"><strong id="activityCount">0</strong><span>حدث محفوظ محليًا</span></section>
+    <section id="activityList" class="activity-list" aria-live="polite"></section>
+    <p id="activityEmpty" class="activity-empty">لا يوجد نشاط مطابق بعد.</p>
+  </main>
+  <script src="../Javascript/js/activity-page.js"></script>
+</body>
+</html>

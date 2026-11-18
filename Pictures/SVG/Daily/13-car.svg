@@ -1,0 +1,6 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Car</title><desc id="desc">Detailed Qulife daily-life illustration</desc>
+  <defs><linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%"><stop stop-color="#2563EB"/><stop offset=".52" stop-color="#EF4444"/><stop offset="1" stop-color="#FACC15"/></linearGradient><linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff" stop-opacity=".95"/><stop offset="1" stop-color="#fff" stop-opacity=".18"/></linearGradient><filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="9" stdDeviation="6" flood-color="#172554" flood-opacity=".2"/></filter></defs>
+  <ellipse cx="100" cy="181" rx="58" ry="7" fill="#172554" opacity=".12"/>
+  <g filter="url(#shadow)"><path d="M36 122 51 83c4-11 13-17 25-17h47c12 0 21 6 27 17l14 39v30H36z" fill="url(#g)" stroke="#fff" stroke-width="6"/><path d="m68 82-9 31h82l-10-31z" fill="#172554" opacity=".85"/><path d="M72 84h23v24H65zM104 84h23l9 24h-32z" fill="url(#glass)"/><circle cx="62" cy="151" r="16" fill="#172554" stroke="#fff" stroke-width="5"/><circle cx="138" cy="151" r="16" fill="#172554" stroke="#fff" stroke-width="5"/><path d="M45 123h18M137 123h18" stroke="url(#g)" stroke-width="6" stroke-linecap="round"/></g>
+</svg>

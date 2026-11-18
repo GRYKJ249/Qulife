@@ -1,0 +1,26 @@
+<!-- صاروخ بينطلق: لهب يرفرف + دخان + نجوم بتنزل + الصاروخ بيهتز (بدل الكورة) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 220">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2563EB"/><stop offset=".5" stop-color="#EF4444"/><stop offset="1" stop-color="#FACC15"/></linearGradient>
+<linearGradient id="bd" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#e5e7eb"/><stop offset=".5" stop-color="#fff"/><stop offset="1" stop-color="#cbd5e1"/></linearGradient></defs>
+<style>
+*{transform-box:fill-box}
+.rk{transform-origin:center;animation:rk .25s linear infinite}
+@keyframes rk{0%,100%{transform:translate(-1px,0)}50%{transform:translate(1px,-2px)}}
+.fl{transform-origin:50% 0;animation:fl .18s ease-in-out infinite}
+@keyframes fl{50%{transform:scaleY(1.3) scaleX(.85)}}
+.sm{fill:#fff;stroke:#e5e7eb;stroke-width:2;opacity:0;animation:sm 1.2s ease-out infinite}.s2{animation-delay:.4s}.s3{animation-delay:.8s}
+@keyframes sm{0%{opacity:.9;transform:translateY(0) scale(.5)}100%{opacity:0;transform:translateY(46px) scale(1.5)}}
+.sr{stroke:#FACC15;stroke-width:3;stroke-linecap:round;opacity:0;animation:sr .9s linear infinite}.r2{animation-delay:.3s}.r3{animation-delay:.6s}
+@keyframes sr{0%{opacity:0;transform:translateY(-30px)}30%{opacity:1}100%{opacity:0;transform:translateY(40px)}}
+</style>
+<path class="sr" d="M22 60V84"/><path class="sr r2" d="M178 40V70"/><path class="sr r3" d="M40 120V140"/><path class="sr" d="M164 110V132"/>
+<circle class="sm" cx="88" cy="190" r="12"/><circle class="sm s2" cx="112" cy="196" r="10"/><circle class="sm s3" cx="100" cy="200" r="14"/>
+<g class="rk">
+<g class="fl"><path d="M84 150 Q100 214 116 150Z" fill="#FACC15"/><path d="M92 150 Q100 192 108 150Z" fill="#EF4444"/></g>
+<path d="M72 118 L42 164 L74 152Z M128 118 L158 164 L126 152Z" fill="url(#g)"/>
+<path d="M100 14 C134 44 140 96 130 152 H70 C60 96 66 44 100 14Z" fill="url(#bd)"/>
+<path d="M100 14 C116 28 124 42 128 56 H72 C76 42 84 28 100 14Z" fill="#EF4444"/>
+<rect x="68" y="130" width="64" height="10" fill="url(#g)"/>
+<circle cx="100" cy="88" r="17" fill="#334155"/><circle cx="100" cy="88" r="12" fill="#60A5FA"/><path d="M92 82 Q96 76 104 78" stroke="#fff" stroke-width="3" fill="none" stroke-linecap="round"/>
+<path d="M76 70 Q74 100 78 130" stroke="#fff" stroke-width="4" fill="none" opacity=".6" stroke-linecap="round"/>
+</g></svg>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Language - Qulife</title>
+<!-- صفحة اللغات (تصميم جديد) - التنسيق: Layouts/Styles/Style/LanguagePage.css | الكود: Layouts/Javascript/js/language-page.js -->
+<!-- الترجمة: i18n.js (97 لغة) | قائمة اللغات: languages-data.js -->
+<link rel="stylesheet" href="../Layouts/Styles/Style/Style.css" />
+<link rel="stylesheet" href="../Layouts/Styles/Style/LanguagePage.css" />
+<script src="../Layouts/Javascript/js/nav.js"></script>
+<script src="../Layouts/Javascript/js/theme-engine.js"></script>
+<script src="../Layouts/Javascript/js/activity-db.js"></script>
+<script src="../Layouts/Javascript/js/i18n.js?v=20261117-ar5"></script>
+<script src="../Layouts/Javascript/js/page-copy-i18n.js?v=20261117-ar5"></script>
+<script src="../Layouts/Javascript/js/languages-data.js"></script>
+</head>
+<body>
+  <header class="lp-bar">
+    <button class="lp-back" id="backBtn" aria-label="Back">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M15 5L8 12L15 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div class="lp-title"><h1 data-i18n="lg.title">Language</h1><p data-i18n="lg.sub">Choose your language</p></div>
+  </header>
+
+  <main class="lp-page" id="lpPage">
+    <!-- اللغة الحالية: العلم كبير وظاهر -->
+    <section class="lp-hero">
+      <div class="lp-hero-flag"><img id="heroFlag" alt="" /></div>
+      <div class="lp-hero-info">
+        <span class="lp-eyebrow" data-i18n="lg.current">Current language</span>
+        <strong id="heroName">English</strong>
+        <small id="heroSub">English</small>
+      </div>
+    </section>
+
+    <div class="lp-search">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M16 16L21 21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      <input id="searchInput" type="text" data-i18n-ph="lg.search" placeholder="Search language" autocomplete="off" />
+    </div>
+
+    <div id="sections"></div>
+
+    <div class="lp-empty" id="emptyState">
+      <!-- القطة المحققة بتتحط هنا من empty-cat.js -->
+      <div class="qc-slot" data-empty-cat></div>
+      <b data-i18n="lg.empty">No language found</b><span data-i18n="lg.emptys">Try another language</span>
+    </div>
+  </main>
+
+  <div class="lp-toast" id="toast" role="status"></div>
+
+  <footer class="lp-apply">
+    <img class="lp-apply-flag" id="applyFlag" alt="" />
+    <div class="lp-apply-name"><small data-i18n="common.selected">Selected</small><b id="applyName">English</b></div>
+    <button id="applyBtn" data-i18n="lg.apply">Apply language</button>
+  </footer>
+
+<script src="../Layouts/Javascript/js/empty-cat.js"></script>
+<script src="../Layouts/Javascript/js/language-page.js"></script>
+<script src="../Layouts/Javascript/js/protect-copy.js"></script>
+</body>
+</html>

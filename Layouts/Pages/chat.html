@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#111827" />
+  <title>محادثة جديدة - Qulife</title>
+  <link rel="stylesheet" href="../Styles/Style/Style.css" />
+  <link rel="stylesheet" href="../Styles/Style/Chat.css" />
+  <link rel="stylesheet" href="../Styles/Style/Sidebar.css" />
+  <script src="../Javascript/js/theme-engine.js"></script>
+  <script src="../Javascript/js/i18n.js?v=20261117-ar5"></script>
+  <script src="../Javascript/js/chat-i18n.js"></script>
+</head>
+<body class="chat-body">
+  <div class="chat-app">
+    <header class="chat-topbar">
+      <div class="chat-top-left" aria-hidden="true"></div>
+      <button class="menu-button" id="menuButton" type="button" aria-label="القائمة" aria-expanded="false">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14M5 16h14"/></svg>
+      </button>
+    </header>
+
+    <!-- السايدبار الجديد: بحث + محادثات مرتبة بالتاريخ + أدوات + حسابي (التنسيق في Sidebar.css) -->
+    <div class="qs-backdrop" id="sidebarBackdrop" hidden></div>
+    <aside class="qs-sidebar" id="chatMenu" hidden data-chat-i18n-aria="sidebar" aria-label="سايدبار المحادثة">
+      <header class="qs-head">
+        <div class="qs-brand">
+          <span class="qs-mark"><svg viewBox="0 0 200 200" aria-hidden="true"><defs><linearGradient id="qsMix" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2563EB"/><stop offset="50%" stop-color="#EF4444"/><stop offset="100%" stop-color="#FACC15"/></linearGradient></defs><path fill="url(#qsMix)" d="M100 165 C 40 120 10 85 10 55 C 10 25 35 5 60 5 C 78 5 92 15 100 30 C 108 15 122 5 140 5 C 165 5 190 25 190 55 C 190 85 160 120 100 165 Z"/></svg></span>
+          <div><strong>Qulife</strong><small data-chat-i18n="assistant">مساعدك الذكي</small></div>
+        </div>
+        <button class="qs-close" id="sidebarClose" type="button" data-chat-i18n-aria="close" aria-label="إغلاق السايدبار"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+      </header>
+
+      <button class="qs-new" id="sidebarNewChat" type="button">
+        <span class="qs-new-icon"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span>
+        <span class="qs-new-text" data-chat-i18n="newChat">محادثة جديدة</span>
+        <kbd>Ctrl N</kbd>
+      </button>
+
+      <label class="qs-search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+        <input id="sidebarSearch" type="search" data-chat-i18n-ph="searchChats" placeholder="ابحث في محادثاتك" aria-label="ابحث في محادثاتك" autocomplete="off" />
+      </label>
+
+      <div class="qs-scroll"><div id="chatHistory" class="qs-history" data-chat-i18n-aria="chats" aria-label="محادثاتك"></div></div>
+
+      <section class="qs-tools" aria-label="أدوات هذه المحادثة">
+        <span class="qs-label" data-chat-i18n="tools">أدوات المحادثة</span>
+        <div class="qs-tool-grid">
+          <button type="button" data-chat-tool="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 5 5"/></svg><span data-chat-i18n="search">بحث</span></button>
+          <button type="button" data-chat-tool="saved"><svg viewBox="0 0 24 24"><path d="M6 4h12v17l-6-4-6 4z"/></svg><span data-chat-i18n="saved">محفوظات</span></button>
+          <button type="button" data-chat-tool="rename"><svg viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 0 1 3 3L8 18l-4 1 1-4Z"/></svg><span data-chat-i18n="rename">تسمية</span></button>
+          <button type="button" data-chat-tool="copy"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg><span data-chat-i18n="copy">نسخ</span></button>
+          <button type="button" data-chat-tool="export"><svg viewBox="0 0 24 24"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 21h14"/></svg><span data-chat-i18n="export">تصدير</span></button>
+          <button type="button" data-chat-tool="clear" class="danger"><svg viewBox="0 0 24 24"><path d="M4 7h16M10 11v6m4-6v6M6 7l1 14h10l1-14M9 7V4h6v3"/></svg><span data-chat-i18n="clear">مسح</span></button>
+        </div>
+      </section>
+
+      <footer class="qs-foot">
+        <a class="qs-user" href="account.html" data-chat-i18n-aria="account" aria-label="حسابي">
+          <span class="qs-avatar" id="sidebarAvatar">Q</span>
+          <span class="qs-user-text"><strong id="sidebarUserName">user name</strong><small data-chat-i18n="account">حسابي</small></span>
+        </a>
+        <nav class="qs-links" data-chat-i18n-aria="dashboard" aria-label="التنقل">
+          <a href="dashboard.html" data-chat-i18n-aria="dashboard" aria-label="لوحة Qulife" title="لوحة Qulife"><svg viewBox="0 0 24 24"><path d="m4 11 8-7 8 7v9H4zM9 20v-6h6v6"/></svg></a>
+          <a href="activity.html" data-chat-i18n-aria="activity" aria-label="نشاطي" title="نشاطي"><svg viewBox="0 0 24 24"><path d="M4 19V5m0 14h16M8 15l3-4 3 2 4-6"/></svg></a>
+          <a href="Themes.html" data-chat-i18n-aria="themes" aria-label="الثيمات" title="الثيمات"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M8 14c3 2 6 2 8 0M9 9h.01M15 9h.01"/></svg></a>
+        </nav>
+      </footer>
+    </aside>
+
+    <section class="add-sheet" id="addSheet" hidden data-chat-i18n-aria="add" aria-label="إضافة إلى المحادثة">
+      <div class="sheet-handle"></div><div class="sheet-heading"><div><span class="sidebar-kicker" data-chat-i18n="addQuick">إضافة سريعة</span><h2 data-chat-i18n="addTitle">خلّي Qulife أقرب لفكرتك</h2></div><button id="addSheetClose" type="button" aria-label="إغلاق"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></svg></button></div>
+      <div class="add-options">
+        <button type="button" id="addFileOption"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M8 13h8M8 17h5"/></svg><span data-chat-i18n="file">تحميل ملف</span><small data-chat-i18n="fileHint">TXT · MD · CSV · JSON</small></button>
+        <button type="button" id="addImageOption"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="9" cy="9" r="1.5"/><path d="m5 17 4-4 3 3 2-2 5 5"/></svg><span data-chat-i18n="image">تحميل صور</span><small data-chat-i18n="imageHint">أضف صورًا لفكرتك</small></button>
+        <button type="button" id="addFeatureOption"><svg viewBox="0 0 24 24"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/><circle cx="12" cy="12" r="3"/></svg><span data-chat-i18n="features">ربط مع الميزات</span><small data-chat-i18n="featuresHint">الصوت · النشاط · الثيمات</small></button>
+      </div>
+    </section>
+
+    <div class="chat-search-panel" id="chatSearchPanel" hidden>
+      <input id="chatSearchInput" type="search" data-chat-i18n-ph="messageSearch" placeholder="ابحث في الرسائل..." aria-label="ابحث في الرسائل" />
+      <span id="chatSearchCount" aria-live="polite">0</span>
+      <button type="button" id="chatSearchPrev" aria-label="النتيجة السابقة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 15 6-6 6 6"/></svg></button>
+      <button type="button" id="chatSearchNext" aria-label="النتيجة التالية"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
+      <button type="button" id="chatSearchClose" aria-label="إغلاق البحث"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+    </div>
+
+    <main class="chat-thread" id="chatThread" data-chat-i18n-aria="chats" aria-label="المحادثة">
+      <div class="thread-inner">
+        <section class="assistant-message" aria-label="بداية محادثة جديدة">
+          <div class="assistant-content">
+            <div class="sticker-hero" id="stickerHero" aria-label="ملصق عشوائي"></div>
+            <p class="assistant-greeting" id="welcomeCopy"></p>
+            <div class="message-actions" aria-label="إجراءات الرسالة">
+              <button type="button" data-action="more" aria-label="المزيد" title="المزيد"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="1.7"/><circle cx="12" cy="12" r="1.7"/><circle cx="19" cy="12" r="1.7"/></svg></button>
+              <button type="button" data-action="share" aria-label="مشاركة" title="مشاركة"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"/></svg></button>
+              <button type="button" data-action="speak" aria-label="قراءة بصوت" title="قراءة بصوت"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H3v6h3l5 4zM15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg></button>
+              <button type="button" data-action="dislike" aria-label="لم تعجبني" title="لم تعجبني"><svg viewBox="0 0 24 24"><path d="M7 10v11M15 5.9 14 10h5.4a2 2 0 0 1 1.9 2.6l-2 6A2 2 0 0 1 17.4 20H7V9l2-6h5a2 2 0 0 1 1.9 2.6L15 10"/></svg></button>
+              <button type="button" data-action="like" aria-label="أعجبتني" title="أعجبتني"><svg viewBox="0 0 24 24"><path d="M7 14v-11M15 18.1 14 14H8.6a2 2 0 0 1-1.9-2.6l2-6A2 2 0 0 1 10.6 4H17v11l-2 6h-5a2 2 0 0 1-1.9-2.6L9 14"/></svg></button>
+              <button type="button" data-action="copy" aria-label="نسخ" title="نسخ"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="13" height="13" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg></button>
+            </div>
+            <div class="suggestions" id="suggestions" aria-label="اقتراحات للبدء">
+              <button type="button" class="suggestion" data-prompt="لخّص لي فكرة معقدة بطريقة بسيطة">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h10M4 18h6"/></svg><span>لخّص لي فكرة معقدة</span>
+              </button>
+              <button type="button" class="suggestion" data-prompt="ساعدني أرتب يومي وأحدد أولوياتي">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg><span>رتّب لي يومي</span>
+              </button>
+              <button type="button" class="suggestion" data-prompt="اكتب لي كود بسيط مع شرح لكل سطر">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg><span>اكتب لي كود مع شرح</span>
+              </button>
+              <button type="button" class="suggestion" data-prompt="اقترح لي أفكار لمشروع جديد">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2.1h5c0-.9.4-1.6 1-2.1A6 6 0 0 0 12 3Z"/></svg><span>أفكار لمشروع جديد</span>
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="user-messages" id="userMessages" aria-live="polite" aria-label="رسائلك"></section>
+      </div>
+    </main>
+
+    <button class="scroll-down" id="scrollDown" type="button" hidden aria-label="الانتقال لآخر رسالة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14m0 0 6-6m-6 6-6-6"/></svg></button>
+
+    <footer class="chat-footer">
+      <div class="attachment-list" id="pendingAttachments" hidden aria-live="polite"></div>
+      <form class="chat-composer" id="chatForm" autocomplete="off">
+        <button class="composer-side attach-side" id="attachButton" type="button" data-chat-i18n-aria="add" data-chat-i18n-title="add" aria-label="إضافة" title="إضافة">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+        <input id="chatFiles" type="file" accept=".txt,.md,.csv,.json,.log,text/plain,text/markdown,text/csv,application/json" multiple hidden />
+        <input id="chatImages" type="file" accept="image/*" multiple hidden />
+        <textarea id="chatInput" rows="1" data-chat-i18n-ph="input" placeholder="اكتب رسالتك إلى Qulife" data-chat-i18n-aria="inputLabel" aria-label="اكتب رسالتك" dir="auto"></textarea>
+        <button class="composer-side" id="voiceButton" type="button" data-chat-i18n-aria="voice" data-chat-i18n-title="voice" aria-label="تسجيل صوتي" title="تسجيل صوتي">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21m-4 0h8"/></svg>
+        </button>
+        <button class="send-button" id="chatSend" type="submit" data-chat-i18n-aria="send" data-chat-i18n-title="send" aria-label="إرسال" title="إرسال">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m0 0L6 11m6-6 6 6"/></svg>
+        </button>
+        <button class="stop-button" id="chatStop" type="button" hidden data-chat-i18n-aria="stop" data-chat-i18n-title="stop" aria-label="إيقاف الرد" title="إيقاف الرد"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="6.5" width="11" height="11" rx="2.5"/></svg></button>
+      </form>
+      <p class="chat-footnote"><span class="char-count" id="charCount" hidden></span><span data-chat-i18n="footnote">تُرسل الرسائل ومحتوى الملفات النصية التي تختارها إلى خدمة الذكاء الاصطناعي.</span></p>
+    </footer>
+  </div>
+  <div class="chat-toast" id="chatToast" role="status" aria-live="polite"></div>
+  <script src="../Javascript/js/chat.js"></script>
+</body>
+</html>

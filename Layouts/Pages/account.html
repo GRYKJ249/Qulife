@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الحساب - Qulife</title>
+  <link rel="stylesheet" href="../Styles/Style/Style.css" />
+  <link rel="stylesheet" href="../Styles/Style/Themes.css" />
+  <link rel="stylesheet" href="../Styles/Style/Account.css" />
+  <script src="../Javascript/js/nav.js"></script>
+  <script src="../Javascript/js/theme-engine.js"></script>
+  <script src="../Javascript/js/activity-db.js"></script>
+  <script src="../Javascript/js/i18n.js?v=20261117-ar5"></script>
+</head>
+<body class="account-body">
+  <main class="account-shell">
+    <header class="account-header">
+      <a class="back-btn" href="dashboard.html" aria-label="رجوع"><svg viewBox="0 0 24 24" fill="none"><path d="m15 5-7 7 7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <div><p class="eyebrow">مساحتك الخاصة</p><h1>الحساب</h1></div>
+      <a class="save-top" href="dashboard.html">تم</a>
+    </header>
+
+    <section class="account-identity" aria-label="الملف الشخصي">
+      <div class="identity-orbit"><div class="profile-photo" id="profilePhoto"><span id="profileInitial">Q</span><img id="profileImage" alt="" /></div><span class="orbit-ring"></span><span class="orbit-star">✦</span></div>
+      <div class="identity-copy"><span class="status-badge"><i></i> حسابك جاهز</span><h2 id="profileName">user name</h2><p>اجعل Qulife يشبه يومك.</p></div>
+      <label class="photo-btn" title="تغيير الصورة"><input id="photoInput" type="file" accept="image/*" /><svg viewBox="0 0 24 24" fill="none"><path d="M12 16V4m0 0L7 9m5-5 5 5M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>الصورة</span></label>
+    </section>
+
+    <nav class="account-tabs" aria-label="صفحات الحساب" role="tablist">
+      <button class="account-tab active" data-panel="overview" role="tab" aria-selected="true"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="4" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="4" y="14" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/><rect x="14" y="14" width="6" height="6" rx="1.5" stroke="currentColor" stroke-width="1.8"/></svg><span>نظرة عامة</span></button>
+      <button class="account-tab" data-panel="activity" role="tab" aria-selected="false"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h3l2-6 4 12 2-6h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>نشاطي</span></button>
+      <button class="account-tab" data-panel="security" role="tab" aria-selected="false"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 19 6v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span>الأمان</span></button>
+      <button class="account-tab" data-panel="preferences" role="tab" aria-selected="false"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6 2.1 2.1m0-12.8-2.1 2.1m-8.6 8.6-2.1 2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/></svg><span>التفضيلات</span></button>
+    </nav>
+
+    <section class="account-panel active" id="panel-overview" role="tabpanel">
+      <div class="panel-heading"><div><span class="panel-kicker">مساحتك الآن</span><h2>كل شيء في مكانه</h2></div><span class="panel-mark">⌁</span></div>
+      <div class="stat-grid"><div class="stat-card accent"><svg viewBox="0 0 24 24" fill="none"><path d="M12 20s-7-4.3-7-10a4 4 0 0 1 7-2.5A4 4 0 0 1 19 10c0 5.7-7 10-7 10Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg><strong id="momentCount">0</strong><span>لحظاتك</span></div><div class="stat-card"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><strong id="activityCount">0</strong><span>نشاط محفوظ</span></div><div class="stat-card"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M6 7v10m12-10v10M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 4v6m8-3v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><strong id="themeName">Qulife</strong><span>الثيم الحالي</span></div></div>
+      <div class="section-label">بياناتك</div>
+      <div class="info-list"><div class="info-row"><span class="row-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.8"/><path d="M5 20c.8-3.4 3-5 7-5s6.2 1.6 7 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><small>الاسم</small><strong id="nameValue">user name</strong></div></div><div class="info-row"><span class="row-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8"/></svg></span><div><small>البريد الإلكتروني</small><strong>محفوظ بشكل خاص</strong></div><span class="private-chip">خاص</span></div></div>
+      <div class="svg-note"><svg viewBox="0 0 80 64" fill="none" aria-hidden="true"><path d="M15 49c-6-2-8-8-5-13 1-3 4-5 8-5 1-9 8-15 17-15 7 0 13 4 16 10 8-2 16 4 16 12 0 7-5 12-12 12H15Z" fill="var(--accent-soft)" stroke="var(--accent-text)" stroke-width="2"/><path d="m31 34 6 6 12-13" stroke="var(--accent-text)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg><p>بياناتك تبقى لك. يمكنك حذف سجل نشاط Qulife من صفحة النشاط في أي وقت.</p></div>
+    </section>
+
+    <section class="account-panel" id="panel-activity" role="tabpanel" hidden>
+      <div class="panel-heading"><div><span class="panel-kicker">ذاكرة Qulife</span><h2>آخر نشاط لك</h2></div><a class="panel-link" href="activity.html">عرض الكل</a></div>
+      <div id="recentActivity" class="recent-activity"></div><p id="noActivity" class="empty-panel">لا يوجد نشاط مسجل بعد.</p>
+      <div class="activity-privacy"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3 19 6v5c0 5-3.2 8.2-7 10-3.8-1.8-7-5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg><span>نسجل أحداث Qulife فقط، ولا نسجل كلمات المرور أو النصوص الخاصة.</span></div>
+    </section>
+
+    <section class="account-panel" id="panel-security" role="tabpanel" hidden>
+      <div class="panel-heading"><div><span class="panel-kicker">حماية هادئة</span><h2>الأمان والخصوصية</h2></div><span class="secure-badge"><svg viewBox="0 0 24 24" fill="none"><path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> محمي</span></div>
+      <div class="security-card"><span class="security-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="10" width="14" height="10" rx="3" stroke="currentColor" stroke-width="1.8"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><div><strong>بياناتك محلية</strong><p>سجل النشاط محفوظ في هذا المتصفح ويمكنك حذفه بالكامل.</p></div><i class="security-state">فعّال</i></div>
+      <div class="security-card"><span class="security-icon blue"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.8"/></svg></span><div><strong>شاشة البداية</strong><p>تظهر مرة واحدة عند أول فتح للموقع.</p></div><button id="resetIntro" class="small-action">إظهارها مجددًا</button></div>
+      <div class="security-card danger-card"><span class="security-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 7h14M10 11v6m4-6v6M9 7l1-2h4l1 2m-8 0 1 13h8l1-13" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span><div><strong>مسح سجل النشاط</strong><p>يحذف الأحداث المحلية فقط، ولا يحذف حسابك.</p></div><button id="clearAccountActivity" class="small-action danger">حذف</button></div>
+    </section>
+
+    <section class="account-panel" id="panel-preferences" role="tabpanel" hidden>
+      <div class="panel-heading"><div><span class="panel-kicker">على ذوقك</span><h2>التفضيلات</h2></div></div>
+      <div class="preference-list"><a class="preference-row" href="Themes.html"><span class="preference-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M6 7v10m12-10v10M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 4v6m8-3v6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></span><span><small>المظهر</small><strong>اختيار ثيم Qulife</strong></span><b>‹</b></a><a class="preference-row" href="../../Translation/Translation.html"><span class="preference-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M3 12h18M12 3c2.5 2.5 3.5 5.5 3.5 9S14.5 18.5 12 21c-2.5-2.5-3.5-5.5-3.5-9S9.5 5.5 12 3Z" stroke="currentColor" stroke-width="1.5"/></svg></span><span><small>اللغة</small><strong>العربية</strong></span><b>‹</b></a><div class="preference-row"><span class="preference-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3a7 7 0 0 0-4 12.7V19h8v-3.3A7 7 0 0 0 12 3Z" stroke="currentColor" stroke-width="1.8"/><path d="M9 22h6M9 19h6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span><span><small>اقتراحات Qulife</small><strong>تلميحات لطيفة داخل التطبيق</strong></span><button class="toggle on" type="button" aria-label="تفعيل الاقتراحات"><i></i></button></div></div>
+      <div class="svg-illustration"><svg viewBox="0 0 240 120" fill="none" aria-hidden="true"><path d="M25 85c30-34 45-34 75 0 30-34 45-34 75 0 15-17 27-23 40-20" stroke="var(--accent-text)" stroke-width="3" stroke-linecap="round"/><circle cx="28" cy="84" r="8" fill="var(--accent-soft)" stroke="var(--accent-text)" stroke-width="2"/><circle cx="105" cy="84" r="8" fill="var(--accent-soft)" stroke="var(--accent-text)" stroke-width="2"/><circle cx="180" cy="84" r="8" fill="var(--accent-soft)" stroke="var(--accent-text)" stroke-width="2"/><path d="M101 26c7-12 25-12 32 0 14-4 26 8 22 22 12 5 12 22 0 27H84c-12-6-12-22 0-27-4-14 9-26 23-22Z" fill="var(--surface-soft)" stroke="var(--accent-text)" stroke-width="2"/></svg><p>غيّر الشكل واللغة، ودع المساحة تتغير معك.</p></div>
+    </section>
+  </main>
+  <script src="../Javascript/js/account.js"></script>
+</body>
+</html>

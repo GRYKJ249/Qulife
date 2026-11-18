@@ -1,0 +1,7 @@
+<svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="cofG" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#2563EB"/><stop offset="50%" stop-color="#EF4444"/><stop offset="100%" stop-color="#FACC15"/></linearGradient></defs>
+            <path fill="url(#cofG)" d="M30 35 L140 35 L132 132 C 132 142 124 148 114 148 L56 148 C 46 148 38 142 38 132 Z"/>
+            <path fill="none" stroke="url(#cofG)" stroke-width="10" d="M140 55 C 168 55 168 95 140 95"/>
+            <rect x="28" y="28" width="114" height="10" rx="5" fill="#fff" opacity=".9"/>
+            <path d="M48 28 C 48 55 122 55 122 28" fill="#fff" opacity=".35"/>
+          </svg>
